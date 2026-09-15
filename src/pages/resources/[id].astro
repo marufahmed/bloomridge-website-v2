@@ -35,7 +35,7 @@ const jsonLd = [
     '@type': 'Article',
     headline: d.title,
     description: d.description,
-    image: `${site.url}/og/${d.cover}.png`,
+    image: `${site.url}/og/${d.cover}.jpg`,
     datePublished: d.pubDate.toISOString(),
     dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
     author: { '@type': 'Organization', name: site.name, url: site.url },
