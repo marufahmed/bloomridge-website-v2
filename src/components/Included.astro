@@ -1,0 +1,14 @@
+---
+import { included } from '../lib/site';
+import Icon from './Icon.astro';
+const icons = ['school', 'group', 'heart'] as const;
+---
+<ul class="rows">
+  {included.map(([name, desc, n, unit], i) => (
+    <li>
+      <span class="ico"><Icon name={icons[i]} /></span>
+      <div><h3>{name}</h3><p>{desc}</p></div>
+      <div class="stat"><b>{n}</b><span>{unit}</span></div>
+    </li>
+  ))}
+</ul>

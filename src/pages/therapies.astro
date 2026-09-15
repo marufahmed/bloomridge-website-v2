@@ -1,0 +1,120 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../lib/site';
+import { cover, alt } from '../lib/images';
+
+const items = [
+  {
+    id: 'ot', icon: 'hand', img: 'occupational-therapy',
+    name: 'Occupational therapy',
+    what: 'Occupational therapy is about the everyday "occupations" of childhood: holding a spoon, doing up buttons, sitting on a chair without sliding off, coping with a noisy room, gripping a pencil.',
+    does: [
+      'Fine motor skills: grip, hand strength, using both hands together, scissors and crayons.',
+      'Sensory regulation: helping a child who is overwhelmed by noise, touch or movement, or who is always seeking more of it, find a settled state where learning is possible.',
+      'Daily independence: dressing, toileting, eating, and the routines of a school day.',
+      'Body awareness and posture, so that sitting to learn is not itself hard work.',
+    ],
+    looks: 'A session looks like play with a purpose. A fabric swing, a tray of textured objects, beads and string, a climbing mat, playdough. The therapist knows what each activity is quietly working on, and hands the useful bits to the classroom teacher the same day.',
+  },
+  {
+    id: 'slt', icon: 'speech', img: 'speech-therapy',
+    name: 'Speech and language therapy',
+    what: 'Speech is the sounds; language is the understanding and the meaning. A child can have difficulty with either, or both, and the therapist works out which before anything else.',
+    does: [
+      'Receptive language: understanding what is said, following instructions, pointing to the right picture.',
+      'Expressive language: first words, joining words, asking for things, telling you what happened.',
+      'Articulation: the speech sounds that make a child understood by people outside the family.',
+      'Alternatives when words are not there yet: gestures, signs and pictures, so that being understood does not have to wait.',
+    ],
+    looks: 'Small table, two small chairs, picture cards, a mirror, bubbles. The therapist follows your child’s lead, models the next step up, and gives you 2 or 3 things to do at home. Bangla and English are both welcome in the room.',
+  },
+  {
+    id: 'se', icon: 'book', img: 'special-education',
+    name: 'Special education',
+    what: 'One-to-one teaching, at your child’s pace, by a teacher trained to break a skill into steps small enough to succeed at.',
+    does: [
+      'Pre-academic foundations: matching, sorting, sequencing, attention to a task.',
+      'Reading, writing and numbers, following a written curriculum that names what is taught in each trimester.',
+      'Learning how to learn: waiting, asking for help, finishing a task, moving to the next one.',
+      'Bridging into the group: what is practised one-to-one is used in the classroom the same week.',
+    ],
+    looks: 'A quiet corner, one adult, one child, one clear task at a time. Progress is scored against specific assessment items, so we can tell you exactly what moved and what did not.',
+  },
+  {
+    id: 'group', icon: 'group', img: 'group-session',
+    name: 'Psychologist-led group session',
+    what: 'Once a week, a small group of children with a child psychologist, practising the social skills that no one-to-one session can teach: waiting, sharing, losing a game, noticing how someone else feels.',
+    does: [
+      'Turn-taking and waiting, in games where the turn is worth waiting for.',
+      'Peer interaction: greeting, joining in, asking to play.',
+      'Emotional awareness: naming feelings, and what to do with a big one.',
+      'Following group instructions, the way a classroom will ask them to.',
+    ],
+    looks: 'A rug, a circle, a soft ball, and 2 hours that feel like a party but are structured minute by minute. What the psychologist observes goes straight into the Student Profile.',
+  },
+] as const;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Therapies at Bloomridge Springs',
+    itemListElement: items.map((t, i) => ({ '@type': 'ListItem', position: i + 1, name: t.name, url: `${site.url}/therapies/#${t.id}` })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Therapies', item: `${site.url}/therapies/` },
+    ],
+  },
+];
+---
+<Base title="Therapies: OT, speech and language, special education and group" description="What occupational therapy, speech and language therapy, special education and a psychologist-led group actually do for a young child, and what a session looks like at Bloomridge Springs in Banasree, Dhaka." ogImage="speech-therapy" jsonLd={jsonLd}>
+  <section class="band band--paper head">
+    <div class="wrap">
+      <h1>Therapies, explained by what they do for your child</h1>
+      <p class="lead">Four kinds of help, one team. Your child’s mix is set from their Student Profile and adjusted every week, not fixed at enrolment.</p>
+      <nav class="jump" aria-label="On this page">
+        {items.map((t) => <a href={`#${t.id}`}><Icon name={t.icon} /> {t.name}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  {items.map((t, i) => (
+    <section class:list={['band', i % 2 ? 'band--sand' : '']} id={t.id}>
+      <div class:list={['wrap', 'split', { 'split--rev': i % 2 }]}>
+        <div>
+          <h2>{t.name}</h2>
+          <p class="lead">{t.what}</p>
+          <ul class="does">
+            {t.does.map((d) => <li><Icon name="check" /> <span>{d}</span></li>)}
+          </ul>
+          <h3>What a session looks like</h3>
+          <p>{t.looks}</p>
+        </div>
+        <div class="arch">
+          <Image src={cover(t.img)} alt={alt[t.img]} widths={[600, 900, 1400]} sizes="(min-width: 56rem) 45vw, 100vw" loading={i === 0 ? 'eager' : 'lazy'} />
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <Cta title="Not sure which therapy your child needs?" text="You do not have to know. The assessment looks at all six areas of development and the plan follows from what we see." />
+</Base>
+
+<style>
+  .head { padding-bottom: clamp(2rem, 4vw, 3rem); }
+  .jump { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1.5rem; }
+  .jump a { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.55rem 1rem; border-radius: 999px; background: var(--sand); text-decoration: none; font-size: 0.92rem; color: var(--pine); }
+  .jump a:hover { background: var(--accent-tint); }
+  .jump :global(svg) { width: 1.1em; height: 1.1em; color: var(--accent-deep); }
+  .does { list-style: none; padding: 0; margin: 0 0 1.75rem; display: grid; gap: 0.7rem; }
+  .does li { display: flex; gap: 0.6rem; align-items: flex-start; }
+  .does :global(svg) { flex: none; width: 1.2rem; height: 1.2rem; margin-top: 0.25rem; color: var(--accent-deep); }
+  h3 { font-size: 1.2rem; }
+</style>

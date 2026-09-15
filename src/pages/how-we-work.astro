@@ -1,0 +1,121 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import Loop from '../components/Loop.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../lib/site';
+import { cover, alt } from '../lib/images';
+
+const scale = [
+  ['Emerging', 'The skill appears sometimes, with a lot of help.'],
+  ['Developing', 'Often there, with a prompt or a model.'],
+  ['Consistent', 'Reliable in the room where it was taught.'],
+  ['Independent', 'Used without prompting, in new places, with new people.'],
+];
+const year = [
+  ['September to November', 'Teaching block. A 3-month plan for every child, with goals tied to the trimester targets.'],
+  ['December', 'Assessment month. Every goal is scored on the 4-step scale and the next plan is written from the result.'],
+  ['January to March', 'Teaching block.'],
+  ['April', 'Assessment month.'],
+  ['May to July', 'Teaching block.'],
+  ['August', 'Assessment month, and the year’s summary for parents.'],
+];
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+    { '@type': 'ListItem', position: 2, name: 'How we work', item: `${site.url}/how-we-work/` },
+  ],
+}];
+---
+<Base title="How we work: the collaborative feedback loop" description="Strengths-first assessment, a live Student Profile, a daily loop between therapists and teachers, a weekly review with parents and 3-month plans assessed each trimester. How Bloomridge Springs turns therapy into progress you can see." ogImage="parent-review" jsonLd={jsonLd}>
+  <section class="band band--paper">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">How we work</p>
+        <h1>One team, one profile, one loop</h1>
+        <p class="lead">Most centres have good therapists. What makes progress stick is whether the therapist, the teacher and the parent are working from the same page on the same day. At Bloomridge that page is the Student Profile, and the loop is how it stays true.</p>
+      </div>
+      <div class="arch">
+        <Image src={cover('parent-review')} alt={alt['parent-review']} widths={[600, 900, 1400]} sizes="(min-width: 56rem) 45vw, 100vw" loading="eager" fetchpriority="high" />
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>The collaborative feedback loop</h2>
+      <p class="lead">Four moves, repeated every week.</p>
+      <Loop />
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap split">
+      <div class="prose">
+        <h2>Strengths first</h2>
+        <p>The first assessment is play-based and takes place across all six areas of development: communication, social and emotional, sensory and regulation, fine motor, gross motor, and self-help. We add an academic strand for children heading toward school.</p>
+        <p>We write down what your child can do before we write down what they cannot. That is not politeness. It is the foundation the plan is built on, because every new skill is taught from one the child already has.</p>
+        <p>No diagnosis is made or required. If a paediatric or developmental opinion would help, we say so.</p>
+      </div>
+      <div>
+        <h2 class="h-small">The 4-step scale every goal is scored on</h2>
+        <ol class="scale">
+          {scale.map(([name, desc]) => <li><b>{name}</b><span>{desc}</span></li>)}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--pine">
+    <div class="wrap split">
+      <div class="prose on-dark">
+        <h2>A plan every 3 months, assessed every trimester</h2>
+        <p>Each child has an individual education plan written for a 3-month teaching block. Every goal in it names the curriculum target it comes from and the assessment item it will be scored against, so the December review can say plainly what moved.</p>
+        <p>A goal that is not met is not a failure. It is rewritten with a smaller step, or a different route, and taught again.</p>
+        <p>The school curriculum states the exact letters, words and numbers taught in each trimester, so what your child is learning is never a mystery to you.</p>
+      </div>
+      <div>
+        <h2 class="h-small">The school year</h2>
+        <ol class="year">
+          {year.map(([when, what], i) => (
+            <li class:list={{ assess: i % 2 }}><b>{when}</b><span>{what}</span></li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap split split--rev">
+      <div class="prose">
+        <h2>You are part of the team</h2>
+        <p>The profile is updated every week and shared with you. You will hear what was tried, what worked, and what we are trying next.</p>
+        <p>You also get take-home worksheets matched to your child’s level, help building a home routine that survives a Dhaka weekday, and monthly coaching on the specific things that are hard at home.</p>
+        <p><a href="/resources/">Read the parent guides</a> for a feel of how we explain things.</p>
+      </div>
+      <div class="arch">
+        <Image src={cover('home-practice')} alt={alt['home-practice']} widths={[600, 900, 1400]} sizes="(min-width: 56rem) 45vw, 100vw" loading="lazy" />
+      </div>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .h-small { font-size: var(--h3); margin-bottom: 1rem; }
+  .scale, .year { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .scale li, .year li { display: grid; gap: 0.15rem; padding: 0.9rem 1.1rem; border-radius: 14px; background: var(--paper); border: 1px solid var(--hair); }
+  .scale b, .year b { font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--pine); }
+  .scale span, .year span { font-size: var(--small); color: var(--muted); }
+  .scale li:nth-child(1) { border-left: 4px solid var(--hair); }
+  .scale li:nth-child(2) { border-left: 4px solid var(--gold); }
+  .scale li:nth-child(3) { border-left: 4px solid var(--amber); }
+  .scale li:nth-child(4) { border-left: 4px solid var(--pine); }
+  .year li { background: rgba(251, 248, 241, 0.06); border-color: rgba(251, 248, 241, 0.15); }
+  .year b { color: var(--cream); }
+  .year span { color: rgba(251, 248, 241, 0.75); }
+  .year .assess { background: rgba(242, 183, 95, 0.12); border-color: rgba(242, 183, 95, 0.4); }
+  .year .assess b { color: var(--gold); }
+</style>

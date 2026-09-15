@@ -1,0 +1,86 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import ArticleCard from '../../components/ArticleCard.astro';
+import Cta from '../../components/Cta.astro';
+import { site } from '../../lib/site';
+
+const posts = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const [first, ...rest] = posts;
+
+const tagCounts = new Map<string, number>();
+for (const p of posts) for (const t of p.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+const tags = [...tagCounts.entries()].sort((a, b) => b[1] - a[1]);
+const label = (t: string) => t.replace(/-/g, ' ');
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org', '@type': 'CollectionPage',
+    name: 'Guides for parents', url: `${site.url}/resources/`,
+    hasPart: posts.map((p) => ({ '@type': 'Article', headline: p.data.title, url: `${site.url}/resources/${p.id}/`, datePublished: p.data.pubDate.toISOString() })),
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Resources', item: `${site.url}/resources/` },
+    ],
+  },
+];
+---
+<Base title="Guides for parents: speech, sensory, school readiness" description="Plain-English guides from the Bloomridge Springs team on speech delay, sensory processing, occupational therapy, meltdowns, school readiness and choosing a therapy centre in Dhaka." jsonLd={jsonLd}>
+  <section class="band band--paper head">
+    <div class="wrap">
+      <p class="kicker">Resources</p>
+      <h1>Guides for parents who are still deciding</h1>
+      <p class="lead">The questions we hear most from families in Dhaka, answered the way we would answer them across a table. New guides are added regularly; <a href="/rss.xml">subscribe by RSS</a> if that is your thing.</p>
+      <ul class="tags topics">
+        {tags.map(([t, n]) => <li><a href={`#${t}`}>{label(t)} ({n})</a></li>)}
+      </ul>
+    </div>
+  </section>
+
+  {first && (
+    <section class="band band--tight">
+      <div class="wrap"><ArticleCard post={first} large /></div>
+    </section>
+  )}
+
+  <section class="band band--sand">
+    <div class="wrap">
+      <h2 class="sr-only">All guides</h2>
+      <div class="grid grid--3">
+        {rest.map((post) => <ArticleCard post={post} />)}
+      </div>
+    </div>
+  </section>
+
+  {tags.map(([t]) => {
+    const tagged = posts.filter((p) => p.data.tags.includes(t));
+    return (
+      <section class="band band--tight" id={t}>
+        <div class="wrap">
+          <h2 class="tag-h">{label(t)}</h2>
+          <ul class="tag-list">
+            {tagged.map((p) => <li><a href={`/resources/${p.id}/`}>{p.data.title}</a></li>)}
+          </ul>
+        </div>
+      </section>
+    );
+  })}
+
+  <Cta />
+</Base>
+
+<style>
+  .head { padding-bottom: clamp(1.5rem, 3vw, 2.5rem); }
+  .topics { margin-top: 1.25rem; }
+  .topics a { text-decoration: none; text-transform: capitalize; }
+  .tag-h { font-size: 1.4rem; text-transform: capitalize; }
+  .tag-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.4rem; }
+  .tag-list a { text-decoration: none; }
+  .tag-list a:hover { text-decoration: underline; }
+  section[id] { padding-block: 1.5rem; }
+  section[id] + section[id] { border-top: 1px solid var(--hair); }
+</style>

@@ -1,0 +1,42 @@
+---
+import { plans, tk } from '../lib/site';
+import Icon from './Icon.astro';
+interface Props { compact?: boolean }
+const { compact = false } = Astro.props;
+---
+<div class="plans">
+  {plans.map((p) => (
+    <article class:list={['plan', { featured: p.featured }]}>
+      <p class="note">{p.note}</p>
+      <h3>{p.name}</h3>
+      <p class="fee"><span>{tk(p.fee)}</span> <small>per month</small></p>
+      <ul>
+        <li><Icon name="check" /> {p.sessions} one-to-one therapy sessions a week</li>
+        <li><Icon name="check" /> 4 school sessions a week, 2 hrs each</li>
+        <li><Icon name="check" /> 1 psychologist-led group session</li>
+        {!compact && <li><Icon name="check" /> Weekly review and take-home worksheets</li>}
+      </ul>
+      <a class:list={['btn', p.featured ? 'btn--accent' : 'btn--ghost']} href="/contact/">Ask about {p.name}</a>
+    </article>
+  ))}
+</div>
+
+<style>
+  .plans { display: grid; gap: 1rem; }
+  @media (min-width: 52rem) { .plans { grid-template-columns: repeat(3, 1fr); align-items: stretch; } }
+  .plan { border-radius: 20px; padding: 1.75rem 1.5rem; background: var(--paper); border: 1px solid var(--hair); display: flex; flex-direction: column; gap: 0.5rem; }
+  .featured { background: var(--pine); color: var(--cream); border-color: var(--pine); }
+  .featured h3 { color: var(--cream); }
+  .note { font-family: var(--serif); font-style: italic; color: var(--accent-deep); margin: 0; }
+  .featured .note { color: var(--gold); }
+  h3 { font-size: 1.6rem; margin: 0; }
+  .fee { margin: 0.25rem 0 0.75rem; }
+  .fee span { font-family: var(--serif); font-size: 2rem; }
+  .fee small { color: var(--muted); }
+  .featured .fee small { color: rgba(251, 248, 241, 0.7); }
+  ul { list-style: none; padding: 0; margin: 0 0 1.25rem; display: grid; gap: 0.5rem; font-size: 0.92rem; flex: 1; }
+  li { display: flex; gap: 0.5rem; align-items: flex-start; }
+  li :global(svg) { width: 1.1rem; height: 1.1rem; flex: none; margin-top: 0.2rem; color: var(--accent-deep); }
+  .featured li :global(svg) { color: var(--gold); }
+  .btn { align-self: flex-start; }
+</style>

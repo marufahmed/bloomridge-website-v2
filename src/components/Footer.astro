@@ -1,0 +1,65 @@
+---
+import { site } from '../lib/site';
+import Icon from './Icon.astro';
+const year = new Date().getFullYear();
+---
+<footer class="band--deep footer">
+  <div class="wrap">
+    <div class="cols">
+      <div class="who">
+        <img src="/brand/logo-cream.png" width="44" height="51" alt="" loading="lazy" />
+        <p class="name">Bloomridge <em>Springs</em></p>
+        <p class="tag">{site.tagline}.</p>
+        <p class="small">A child-development centre for children aged {site.ages.min} to {site.ages.max}. Early intervention and school readiness, with occupational therapy, speech and language therapy and special education in one team.</p>
+      </div>
+      <div>
+        <h2 class="h">Visit</h2>
+        <address>
+          {site.address.street}<br />{site.address.area}, {site.address.city} {site.address.postcode}
+        </address>
+        <ul class="plain">
+          {site.phones.map((p) => <li><a href={`tel:${p.e164}`}><Icon name="phone" /> {p.display}</a></li>)}
+          <li><a href={`https://wa.me/${site.whatsapp.e164}`} rel="noopener"><Icon name="whatsapp" /> WhatsApp</a></li>
+          <li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="h">Programs</h2>
+        <ul class="plain">
+          <li><a href="/early-intervention/">Early Intervention Program</a></li>
+          <li><a href="/school-readiness/">School Readiness Program</a></li>
+          <li><a href="/therapies/">Therapies and group session</a></li>
+          <li><a href="/fees/">Plans and monthly fees</a></li>
+          <li><a href="/how-we-work/">How we work</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="h">For parents</h2>
+        <ul class="plain">
+          <li><a href="/resources/">Articles and guides</a></li>
+          <li><a href="/about/">About the centre</a></li>
+          <li><a href="/contact/">Book an assessment</a></li>
+          <li><a href="/rss.xml">RSS feed</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">&copy; {year} {site.name}, {site.address.area}, {site.address.city}. We support children with or without a diagnosis and do not provide medical diagnosis or treatment.</p>
+  </div>
+</footer>
+
+<style>
+  .footer { padding-block: clamp(3rem, 6vw, 5rem) 2rem; color: var(--cream); }
+  .cols { display: grid; gap: 2.5rem 2rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+  .who { max-width: 24rem; }
+  .who img { width: 40px; margin-bottom: 0.9rem; }
+  .name { font-family: var(--serif); font-size: 1.5rem; margin: 0 0 0.2rem; color: var(--cream); }
+  .tag { font-family: var(--serif); font-style: italic; color: var(--gold); margin: 0 0 0.9rem; }
+  .small { font-size: 0.88rem; color: rgba(251, 248, 241, 0.72); }
+  .h { font-family: var(--sans); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; color: var(--gold); margin: 0 0 0.9rem; }
+  address { font-style: normal; font-size: 0.95rem; margin-bottom: 0.9rem; color: rgba(251, 248, 241, 0.9); }
+  .plain { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; font-size: 0.95rem; }
+  .plain a { text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; color: rgba(251, 248, 241, 0.9); }
+  .plain a:hover { color: var(--gold); }
+  .plain :global(svg) { width: 1.05em; height: 1.05em; color: var(--gold); }
+  .legal { margin: 3rem 0 0; padding-top: 1.25rem; border-top: 1px solid rgba(251, 248, 241, 0.15); font-size: 0.8rem; color: rgba(251, 248, 241, 0.6); max-width: none; }
+</style>

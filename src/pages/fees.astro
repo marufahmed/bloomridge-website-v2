@@ -1,0 +1,73 @@
+---
+import Base from '../layouts/Base.astro';
+import Plans from '../components/Plans.astro';
+import Included from '../components/Included.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { site, plans, tk } from '../lib/site';
+
+const faq = [
+  ['Is the fee the same for both programs?', 'Yes. The Early Intervention Program and the School Readiness Program share the same three plans. What differs is the content of the sessions, not the price.'],
+  ['What is not included?', 'The fee covers school sessions, the group session, the one-to-one therapy sessions in your plan, the weekly review, and take-home worksheets. Additional one-to-one sessions beyond your plan can be added and are charged per session.'],
+  ['Can we change plan later?', 'Yes, at the start of any month. Many families begin on Foundation while a child settles and move up once the profile shows where extra sessions would help most.'],
+  ['Is there an assessment fee?', 'Please ask when you call. We will tell you the current assessment fee and what it includes before you book.'],
+  ['How do I pay?', 'Monthly, in advance, at the centre. A receipt is issued for every payment.'],
+] as const;
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'OfferCatalog',
+    name: 'Monthly plans',
+    itemListElement: plans.map((p) => ({
+      '@type': 'Offer',
+      name: `${p.name} plan`,
+      price: p.fee,
+      priceCurrency: 'BDT',
+      description: `${p.sessions} one-to-one therapy sessions a week, plus 4 school sessions and 1 group session.`,
+      offeredBy: { '@id': `${site.url}/#organization` },
+    })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  },
+];
+---
+<Base title={`Plans and monthly fees, from ${tk(plans[0].fee)}`} description="Bloomridge Springs monthly fees in Dhaka: Foundation Tk 18,000, Enhanced Tk 22,000, Intensive Tk 26,000. Every plan includes 4 school sessions a week, a psychologist-led group session, one-to-one therapy and a weekly review." jsonLd={jsonLd}>
+  <section class="band band--paper">
+    <div class="wrap">
+      <p class="kicker">Plans and monthly fees</p>
+      <h1>Choose the level of support</h1>
+      <p class="lead">The fees below are the same as in our printed program guide. The only thing that changes between plans is how many one-to-one therapy sessions your child has each week.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <Plans />
+      <p class="meta seats">{site.seats} seats only. If the program is full, we will tell you straight away and hold a place for you.</p>
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap split">
+      <div>
+        <h2>Every plan includes</h2>
+        <p class="lead">The classroom, the group and the review are the same whichever plan you choose.</p>
+      </div>
+      <Included />
+    </div>
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap"><Faq items={faq} title="Questions about fees" /></div>
+  </section>
+
+  <Cta title="Want to talk it through before deciding?" text="Call us and describe what you are seeing. We will suggest a starting plan and explain what would make us recommend moving up or down." />
+</Base>
+
+<style>
+  .seats { margin-top: 1.5rem; }
+</style>

@@ -1,0 +1,27 @@
+---
+import { week } from '../lib/site';
+---
+<div class="week" role="img" aria-label="A typical week: school sessions on 4 days and a psychologist-led group session on the fifth, with one-to-one therapy placed around them.">
+  <ol>
+    {week.map((d) => (
+      <li class:list={[{ school: d.school, group: d.group }]}>
+        <span class="day">{d.day}</span>
+        <span class="block">{d.school ? 'School session' : 'Group session'}</span>
+        <span class="hrs">2 hrs</span>
+      </li>
+    ))}
+  </ol>
+  <p class="note">One-to-one therapy sessions, 2 to 4 a week depending on plan, are timetabled around these blocks.</p>
+</div>
+
+<style>
+  ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+  li { border-radius: 14px; padding: 0.9rem 0.6rem; text-align: center; display: grid; gap: 0.25rem; min-height: 6.5rem; align-content: start; }
+  .school { background: var(--accent-tint); color: var(--pine); }
+  .group { background: var(--pine); color: var(--cream); }
+  .day { font-family: var(--serif); font-size: 1.1rem; }
+  .block { font-size: 0.72rem; line-height: 1.25; }
+  .hrs { font-size: 0.72rem; opacity: 0.7; }
+  .note { font-size: var(--small); color: var(--muted); margin: 0.9rem 0 0; max-width: none; }
+  @media (max-width: 26rem) { .block { font-size: 0.62rem; } li { padding-inline: 0.3rem; } }
+</style>

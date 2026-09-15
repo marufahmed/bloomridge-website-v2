@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import { cover, alt } from '../lib/images';
+interface Props { post: CollectionEntry<'articles'>; large?: boolean }
+const { post, large = false } = Astro.props;
+const d = post.data;
+const date = d.pubDate.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+---
+<article class:list={['card', { large }]}>
+  <a class="arch arch--wide img" href={`/resources/${post.id}/`} tabindex="-1" aria-hidden="true">
+    <Image src={cover(d.cover)} alt={alt[d.cover] ?? ''} widths={[480, 800, 1200]} sizes={large ? '(min-width: 56rem) 55vw, 100vw' : '(min-width: 56rem) 30vw, 100vw'} loading="lazy" />
+  </a>
+  <div class="body">
+    <p class="meta"><time datetime={d.pubDate.toISOString()}>{date}</time></p>
+    <h3><a href={`/resources/${post.id}/`}>{d.title}</a></h3>
+    <p class="desc">{d.description}</p>
+  </div>
+</article>
+
+<style>
+  .card { display: grid; gap: 1rem; align-content: start; }
+  .large { gap: 1.5rem; }
+  @media (min-width: 56rem) { .large { grid-template-columns: 1.3fr 1fr; align-items: center; } }
+  .img { display: block; }
+  h3 { font-size: 1.35rem; margin: 0.2rem 0 0.4rem; }
+  .large h3 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.3rem); }
+  h3 a { text-decoration: none; }
+  h3 a:hover { text-decoration: underline; }
+  .desc { color: var(--muted); font-size: var(--small); margin: 0; }
+  .large .desc { font-size: 1rem; }
+</style>

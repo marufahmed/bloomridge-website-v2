@@ -1,0 +1,91 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import { site } from '../lib/site';
+
+const wa = `https://wa.me/${site.whatsapp.e164}?text=${encodeURIComponent('Hello Bloomridge Springs, I would like to ask about an assessment for my child.')}`;
+const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address.mapsQuery)}`;
+const embed = `https://www.google.com/maps?q=${encodeURIComponent(site.address.mapsQuery)}&output=embed`;
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'ContactPage',
+  name: 'Contact Bloomridge Springs',
+  url: `${site.url}/contact/`,
+  mainEntity: { '@id': `${site.url}/#organization` },
+}];
+---
+<Base title="Contact and book an assessment" description="Call, WhatsApp or email Bloomridge Springs in Banasree, Dhaka to book a strengths-first assessment for your child. Address, map and what to expect at the first visit." ogImage="centre-exterior" jsonLd={jsonLd}>
+  <section class="band band--paper">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">Contact</p>
+        <h1>Book an assessment, or just ask</h1>
+        <p class="lead">Tell us what you are seeing at home. We will listen, tell you honestly whether Bloomridge is the right place, and if it is, book a first assessment.</p>
+        <div class="ways">
+          <a class="way" href={wa} rel="noopener">
+            <span class="ico"><Icon name="whatsapp" /></span>
+            <span><b>WhatsApp</b><small>{site.whatsapp.display}. Usually the fastest reply.</small></span>
+          </a>
+          {site.phones.map((p) => (
+            <a class="way" href={`tel:${p.e164}`}>
+              <span class="ico"><Icon name="phone" /></span>
+              <span><b>Call {p.display}</b><small>Bangla or English.</small></span>
+            </a>
+          ))}
+          <a class="way" href={`mailto:${site.email}?subject=${encodeURIComponent('Assessment enquiry')}`}>
+            <span class="ico"><Icon name="mail" /></span>
+            <span><b>{site.email}</b><small>Attach any previous reports if you have them.</small></span>
+          </a>
+          <a class="way" href={maps} rel="noopener">
+            <span class="ico"><Icon name="pin" /></span>
+            <span><b>{site.address.street}</b><small>{site.address.area}, {site.address.city} {site.address.postcode}. Open in Google Maps.</small></span>
+          </a>
+          {site.hours && (
+            <p class="way"><span class="ico"><Icon name="clock" /></span><span><b>Hours</b><small>{site.hours}</small></span></p>
+          )}
+        </div>
+      </div>
+      <div class="map">
+        <iframe src={embed} title="Map showing Bloomridge Springs in Banasree, Dhaka" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap split">
+      <div class="prose">
+        <h2>What happens when you get in touch</h2>
+        <ol>
+          <li>A short conversation on the phone or WhatsApp about your child and what you are hoping for.</li>
+          <li>A play-based assessment at the centre, usually 1 to 2 hours, with you in the room. We look at all six areas of development and at what your child already does well.</li>
+          <li>A written summary, a program recommendation, and a starting plan. No diagnosis, no jargon.</li>
+          <li>If you decide to go ahead, your child’s Student Profile is opened and the first 3-month plan is written.</li>
+        </ol>
+      </div>
+      <div class="prose">
+        <h2>What to bring</h2>
+        <ul>
+          <li>Any earlier reports from a paediatrician, therapist or school, if you have them.</li>
+          <li>Something your child loves: a toy, a book, a snack.</li>
+          <li>A note of the words or signs your child uses at home, in any language.</li>
+          <li>Your questions. Write them down; the visit goes quickly.</li>
+        </ul>
+        <p><a href="/resources/first-assessment-what-to-expect/">Read more about the first assessment.</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .ways { display: grid; gap: 0.6rem; margin-top: 1.75rem; }
+  .way { display: grid; grid-template-columns: 2.75rem 1fr; gap: 1rem; align-items: center; text-decoration: none; padding: 0.9rem 1rem; border-radius: 14px; background: var(--paper); border: 1px solid var(--hair); margin: 0; max-width: none; }
+  a.way:hover { border-color: var(--accent); }
+  .way .ico { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--pine); color: var(--gold); display: grid; place-items: center; }
+  .way .ico :global(svg) { width: 1.3rem; height: 1.3rem; }
+  .way b { display: block; font-weight: 500; color: var(--pine); }
+  .way small { display: block; color: var(--muted); font-size: 0.85rem; }
+  .map { border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--sand); }
+  .map iframe { width: 100%; height: 100%; border: 0; }
+  @media (max-width: 56rem) { .map { aspect-ratio: 4 / 3; } }
+  ol, ul { padding-left: 1.25rem; }
+  li { margin: 0.5rem 0; }
+</style>

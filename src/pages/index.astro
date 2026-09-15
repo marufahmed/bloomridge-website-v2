@@ -1,0 +1,166 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Included from '../components/Included.astro';
+import Loop from '../components/Loop.astro';
+import Plans from '../components/Plans.astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import Cta from '../components/Cta.astro';
+import { site, programs } from '../lib/site';
+import { cover, alt } from '../lib/images';
+
+const posts = (await getCollection('articles', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const therapies = [
+  ['hand', 'Occupational therapy', 'Fine motor skills, sensory regulation and the daily independence that school and home both ask for.', '/therapies/#ot'],
+  ['speech', 'Speech and language therapy', 'Early language, clear speech and, above all, a way for your child to be understood.', '/therapies/#slt'],
+  ['book', 'Special education', 'One-to-one teaching at your child’s own pace: reading, writing, numbers, and how to learn in a room with others.', '/therapies/#se'],
+  ['group', 'Psychologist-led group', 'Turn-taking, waiting, sharing, noticing feelings. The social skills a child uses every single day.', '/therapies/#group'],
+] as const;
+---
+<Base title="Child development centre in Banasree, Dhaka" description={site.description}>
+  <section class="hero band--pine">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="kicker" data-rise="1">A child-development centre in Banasree, Dhaka</p>
+        <h1 data-rise="2">Every child belongs.<br />Every child blooms.</h1>
+        <p class="lead" data-rise="3">Speech and language therapy, occupational therapy and special education for children aged 2 to 10, in one small classroom team that talks to each other every day, and to you every week.</p>
+        <div class="actions" data-rise="4">
+          <a class="btn btn--accent" href="/contact/">Book an assessment</a>
+          <a class="btn btn--ghost" href="/how-we-work/">How we work</a>
+        </div>
+      </div>
+      <div class="hero-art" data-bloom>
+        <div class="arch">
+          <Image src={cover('hero-classroom')} alt={alt['hero-classroom']} widths={[600, 900, 1400]} sizes="(min-width: 56rem) 44vw, 100vw" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+    </div>
+    <img class="watermark" src="/brand/logo-cream.png" alt="" aria-hidden="true" />
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap">
+      <div class="two">
+        <h2>Two programs, placed by need rather than age</h2>
+        <p class="lead">A strengths-first assessment tells us where your child is. The program, and the mix of therapies inside it, follows from that.</p>
+      </div>
+      <div class="programs">
+        {(['a', 'b'] as const).map((k) => {
+          const p = programs[k];
+          return (
+            <a class="program" data-accent={k} href={`/${p.slug}/`}>
+              <div class="arch arch--sm">
+                <Image src={cover(p.slug)} alt={alt[p.slug]} widths={[500, 800]} sizes="(min-width: 56rem) 40vw, 100vw" loading="lazy" />
+              </div>
+              <div class="program-text">
+                <p class="kicker">{p.label}. {p.ages}.</p>
+                <h3>{p.short} <em>Program</em></h3>
+                <p>{p.lead}</p>
+                <span class="more">Read about the program <Icon name="arrow" /></span>
+              </div>
+            </a>
+          );
+        })}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap split">
+      <div>
+        <h2>What every plan includes</h2>
+        <p class="lead">Four mornings of small-group school, one psychologist-led group session, and one-to-one therapy woven around them.</p>
+        <p><a href="/fees/">See the three plans and monthly fees</a></p>
+      </div>
+      <Included />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <h2>Therapies, explained by what they do for your child</h2>
+      <div class="grid grid--2 therapies">
+        {therapies.map(([icon, name, desc, href]) => (
+          <a class="therapy" href={href}>
+            <span class="ico"><Icon name={icon} /></span>
+            <div><h3>{name}</h3><p>{desc}</p></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap">
+      <div class="two">
+        <h2>How we work: the collaborative feedback loop</h2>
+        <p class="lead">Therapists, teachers and you, working from one living profile of your child. It is the reason skills learned in a therapy room show up in the classroom and at home.</p>
+      </div>
+      <Loop />
+      <p class="after"><a href="/how-we-work/">The full picture, including the 3-month plans and the December assessment</a></p>
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap">
+      <div class="two">
+        <h2>Plans and monthly fees</h2>
+        <p class="lead">Transparent, and the same as the printed guide. Choose the level of one-to-one support; everything else is included.</p>
+      </div>
+      <Plans compact />
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="two">
+        <h2>For parents who are still deciding</h2>
+        <p class="lead">Plain-English guides to the questions we hear most, written by the team.</p>
+      </div>
+      <div class="grid grid--3">
+        {posts.map((post) => <ArticleCard post={post} />)}
+      </div>
+      <p class="after"><a href="/resources/">All articles and guides</a></p>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding-block: clamp(3rem, 6vw, 6rem) 0; }
+  .hero-grid { display: grid; gap: 2.5rem; align-items: end; position: relative; z-index: 1; }
+  @media (min-width: 56rem) { .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 4rem; } }
+  .hero-text { padding-bottom: clamp(2.5rem, 6vw, 6rem); }
+  .hero h1 { font-size: var(--display); color: var(--cream); margin-bottom: 1.25rem; }
+  .hero .lead { color: rgba(251, 248, 241, 0.85); }
+  .hero-art .arch { aspect-ratio: 4 / 4.6; border-radius: 999px 999px 0 0; }
+  .watermark { position: absolute; left: -8vw; bottom: -12vw; width: 46vw; max-width: 34rem; opacity: 0.05; pointer-events: none; }
+
+  .two { max-width: 46rem; margin-bottom: 2.5rem; }
+  .programs { display: grid; gap: 1.5rem; }
+  @media (min-width: 56rem) { .programs { grid-template-columns: 1fr 1fr; gap: 2.5rem; } }
+  .program { display: grid; grid-template-columns: 34% 1fr; gap: 1.25rem; align-items: center; text-decoration: none; padding: 1rem; border-radius: 24px; background: var(--accent-tint); transition: transform 0.25s var(--ease); }
+  .program:hover { transform: translateY(-3px); }
+  .program .arch { aspect-ratio: 4 / 5; }
+  .program h3 { font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); }
+  .program h3 em { font-weight: 400; }
+  .program p { color: var(--muted); font-size: var(--small); }
+  .more { display: inline-flex; align-items: center; gap: 0.4rem; color: var(--accent-deep); font-weight: 500; font-size: 0.95rem; }
+  .more :global(svg) { width: 1.1em; height: 1.1em; }
+  @media (max-width: 30rem) { .program { grid-template-columns: 1fr; } .program .arch { aspect-ratio: 3 / 2; border-radius: 18px; } }
+
+  .therapies { margin-top: 1.5rem; }
+  .therapy { display: grid; grid-template-columns: 3.25rem 1fr; gap: 1.1rem; text-decoration: none; padding: 1.5rem 0; border-top: 1px solid var(--hair); }
+  .therapy .ico { width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--pine); color: var(--gold); display: grid; place-items: center; }
+  .therapy .ico :global(svg) { width: 1.5rem; height: 1.5rem; }
+  .therapy h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+  .therapy p { color: var(--muted); font-size: var(--small); margin: 0; }
+  .therapy:hover h3 { text-decoration: underline; text-decoration-color: var(--accent); }
+  .after { margin-top: 2rem; }
+</style>

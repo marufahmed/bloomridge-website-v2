@@ -1,0 +1,26 @@
+---
+import { loop } from '../lib/site';
+import Icon from './Icon.astro';
+const icons = ['sparkle', 'book', 'loop', 'group'] as const;
+---
+<ol class="loop">
+  {loop.map(([title, text], i) => (
+    <li>
+      <span class="ico"><Icon name={icons[i]} /></span>
+      <h3>{title}</h3>
+      <p>{text}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .loop { list-style: none; margin: 0; padding: 0; display: grid; gap: 1.5rem; counter-reset: step; }
+  @media (min-width: 40rem) { .loop { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 64rem) { .loop { grid-template-columns: repeat(4, 1fr); } }
+  li { position: relative; padding: 1.5rem 1.5rem 1.5rem; border-radius: 18px; background: var(--paper); border: 1px solid var(--hair); }
+  li::before { counter-increment: step; content: counter(step); position: absolute; top: 1.25rem; right: 1.25rem; font-family: var(--serif); font-style: italic; color: var(--accent-deep); font-size: 1.1rem; }
+  .ico { display: grid; place-items: center; width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--pine); color: var(--gold); margin-bottom: 1rem; }
+  .ico :global(svg) { width: 1.35rem; height: 1.35rem; }
+  h3 { font-size: 1.2rem; margin-bottom: 0.4rem; }
+  p { font-size: var(--small); color: var(--muted); margin: 0; }
+</style>
