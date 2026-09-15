@@ -16,7 +16,7 @@ autism early intervention, sensory processing, school readiness, therapy centre 
 | Domain | `www.bloomridgesprings.com` (Cloudflare DNS, records to be set by owner) |
 | Fees | Shown publicly, mirroring the printed brochure |
 | Language | English only, site structured so Bengali pages can be added later |
-| Stack | Astro 5 static site, GitHub Actions build, GitHub Pages hosting |
+| Stack | Astro 7 static site, GitHub Actions build, GitHub Pages hosting |
 | Repository | `maruf-cc/bloomridge-springs`, public, containing only `07-Website/` |
 
 ## Constraints
