@@ -57,7 +57,7 @@ them at build time. The Open Graph cards in `public/og/` are made from them with
 
 | Type | Name | Value | Proxy |
 |---|---|---|---|
-| CNAME | www | maruf-cc.github.io | DNS only |
+| CNAME | www | marufahmed.github.io | DNS only |
 | A | @ | 185.199.108.153 | DNS only |
 | A | @ | 185.199.109.153 | DNS only |
 | A | @ | 185.199.110.153 | DNS only |
