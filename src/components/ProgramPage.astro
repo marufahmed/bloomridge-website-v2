@@ -10,8 +10,8 @@ import Cta from './Cta.astro';
 import { programs, site } from '../lib/site';
 import { cover, alt } from '../lib/images';
 
-interface Props { program: 'a' | 'b'; description: string }
-const { program, description } = Astro.props;
+interface Props { program: 'a' | 'b'; title: string; description: string }
+const { program, title, description } = Astro.props;
 const p = programs[program];
 const other = programs[program === 'a' ? 'b' : 'a'];
 const img = cover(p.slug);
@@ -44,7 +44,7 @@ const jsonLd = [
   },
 ];
 ---
-<Base title={p.name} description={description} accent={program} ogImage={p.slug} jsonLd={jsonLd}>
+<Base title={title} description={description} accent={program} ogImage={p.slug} jsonLd={jsonLd}>
   <section class="band hero">
     <div class="wrap split">
       <div>

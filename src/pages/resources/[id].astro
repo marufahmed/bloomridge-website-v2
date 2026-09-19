@@ -82,6 +82,13 @@ const jsonLd = [
           <p class="side-h">About Bloomridge Springs</p>
           <p class="side-p">A child-development centre in Banasree, Dhaka, for children aged 2 to 10. Early intervention and school readiness, with speech, occupational therapy and special education in one team.</p>
           <a class="btn btn--primary" href="/contact/">Book an assessment</a>
+          <p class="side-h">Services in Dhaka</p>
+          <ul class="side-links">
+            <li><a href="/speech-therapy-dhaka/">Speech therapy</a></li>
+            <li><a href="/occupational-therapy-dhaka/">Occupational therapy</a></li>
+            <li><a href="/special-education-dhaka/">Special education</a></li>
+            <li><a href="/social-skills-group-dhaka/">Social skills group</a></li>
+          </ul>
           <p class="side-h">Topics</p>
           <ul class="tags">{d.tags.map((t) => <li><a href={`/resources/#${t}`}>{t.replace(/-/g, ' ')}</a></li>)}</ul>
         </aside>
@@ -112,4 +119,7 @@ const jsonLd = [
   .side-p { font-size: var(--small); color: var(--muted); }
   .side .btn { margin: 0.25rem 0 2rem; }
   .side .tags a { text-decoration: none; text-transform: capitalize; }
+  .side-links { list-style: none; padding: 0; margin: 0 0 1.75rem; display: grid; gap: 0.4rem; font-size: var(--small); }
+  .side-links a { text-decoration: none; }
+  .side-links a:hover { text-decoration: underline; }
 </style>

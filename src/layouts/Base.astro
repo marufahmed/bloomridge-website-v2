@@ -3,6 +3,7 @@ import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../lib/site';
+import { services } from '../lib/services';
 
 interface Props {
   title: string;
@@ -21,7 +22,7 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
-const fullTitle = Astro.url.pathname === '/' ? `${site.name}: ${site.tagline}` : `${title} | ${site.name}`;
+const fullTitle = `${title} | ${site.name}`;
 const ogUrl = new URL(`/og/${ogImage}.jpg`, site.url).href;
 
 const org = {
@@ -46,8 +47,16 @@ const org = {
   },
   geo: { '@type': 'GeoCoordinates', latitude: site.map.lat, longitude: site.map.lng },
   hasMap: site.map.link,
-  areaServed: { '@type': 'City', name: 'Dhaka' },
-  knowsAbout: ['Early intervention', 'School readiness', 'Speech and language therapy', 'Occupational therapy', 'Special education', 'Child development'],
+  areaServed: [{ '@type': 'City', name: 'Dhaka' }, ...site.areas.map((name) => ({ '@type': 'Place', name: `${name}, Dhaka` }))],
+  knowsAbout: ['Early intervention', 'School readiness', 'Speech and language therapy', 'Occupational therapy', 'Special education', 'Child development', 'Autism support', 'Sensory processing'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Services',
+    itemListElement: services.map((s) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name: s.name, url: `${site.url}/${s.slug}/`, areaServed: 'Dhaka' },
+    })),
+  },
   ...(site.social.facebook ? { sameAs: [site.social.facebook] } : {}),
 };
 const website = {
@@ -93,9 +102,12 @@ const graph = [org, website, ...jsonLd];
     <meta name="geo.region" content="BD-13" />
     <meta name="geo.placename" content="Banasree, Dhaka" />
 
-    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" href="/favicon-48x48.png" type="image/png" sizes="48x48" />
+    <link rel="icon" href="/favicon-96x96.png" type="image/png" sizes="96x96" />
+    <link rel="icon" href="/favicon-144x144.png" type="image/png" sizes="144x144" />
     <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="alternate" type="application/rss+xml" title={`${site.name} articles`} href="/rss.xml" />
     <link rel="sitemap" href="/sitemap-index.xml" />

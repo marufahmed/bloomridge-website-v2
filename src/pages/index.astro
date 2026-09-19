@@ -16,13 +16,13 @@ const posts = (await getCollection('articles', ({ data }) => !data.draft))
   .slice(0, 3);
 
 const therapies = [
-  ['hand', 'Occupational therapy', 'Fine motor skills, sensory regulation and the daily independence that school and home both ask for.', '/therapies/#ot'],
-  ['speech', 'Speech and language therapy', 'Early language, clear speech and, above all, a way for your child to be understood.', '/therapies/#slt'],
-  ['book', 'Special education', 'One-to-one teaching at your child’s own pace: reading, writing, numbers, and how to learn in a room with others.', '/therapies/#se'],
-  ['group', 'Psychologist-led group', 'Turn-taking, waiting, sharing, noticing feelings. The social skills a child uses every single day.', '/therapies/#group'],
+  ['hand', 'Occupational therapy in Dhaka', 'Fine motor skills, sensory regulation and the daily independence that school and home both ask for.', '/occupational-therapy-dhaka/'],
+  ['speech', 'Speech therapy in Dhaka', 'Early language, clear speech and, above all, a way for your child to be understood.', '/speech-therapy-dhaka/'],
+  ['book', 'Special education in Dhaka', 'One-to-one teaching at your child’s own pace: reading, writing, numbers, and how to learn in a room with others.', '/special-education-dhaka/'],
+  ['group', 'Psychologist-led social skills group', 'Turn-taking, waiting, sharing, noticing feelings. The social skills a child uses every single day.', '/social-skills-group-dhaka/'],
 ] as const;
 ---
-<Base title="Child development centre in Banasree, Dhaka" description={site.description}>
+<Base title="Child Development Centre in Dhaka: Speech Therapy, Occupational Therapy, Special Education" description="Bloomridge Springs is a child-development centre in Banasree, Dhaka for children aged 2 to 10. Speech therapy, occupational therapy, special education and a psychologist-led group in one small classroom team, with a weekly review for parents.">
   <section class="hero band--pine">
     <div class="wrap hero-grid">
       <div class="hero-text">
@@ -83,7 +83,7 @@ const therapies = [
 
   <section class="band">
     <div class="wrap">
-      <h2>Therapies, explained by what they do for your child</h2>
+      <h2>Therapies in Banasree, Dhaka, explained by what they do for your child</h2>
       <div class="grid grid--2 therapies">
         {therapies.map(([icon, name, desc, href]) => (
           <a class="therapy" href={href}>

@@ -37,6 +37,9 @@ export const site = {
   social: { facebook: '' as string },
   seats: 15,
   ages: { min: 2, max: 10 },
+  // Neighbourhoods families travel from. Used on the contact page and in the
+  // structured data so local searches from these areas match.
+  areas: ['Banasree', 'Rampura', 'Aftabnagar', 'Khilgaon', 'Bashabo', 'Badda', 'Malibagh', 'Mugda', 'Goran', 'Bhuiyan Para'],
 } as const;
 
 export const programs = {
