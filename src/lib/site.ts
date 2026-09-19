@@ -17,6 +17,14 @@ export const site = {
     full: 'Floor 1, House 1/1, Road 7, Block F, Banasree, Dhaka 1219',
     mapsQuery: 'House 1/1, Road 7, Block F, Banasree, Dhaka 1219',
   },
+  // From the Google Maps listing "Bloomridge Springs" (share, embed a map).
+  map: {
+    lat: 23.7597462,
+    lng: 90.4364074,
+    link: 'https://maps.google.com/?cid=870262097240768389',
+    embed:
+      'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.6531187788282!2d90.4364074!3d23.7597462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6a5d42d2a63ac64f%3A0xc13cac43f85bf85!2sBloomridge%20Springs!5e0!3m2!1sen!2sbd!4v1789797669545!5m2!1sen!2sbd',
+  },
   phones: [
     { display: '01685 559711', e164: '+8801685559711' },
     { display: '01817 710777', e164: '+8801817710777' },

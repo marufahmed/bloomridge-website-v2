@@ -4,8 +4,8 @@ import Icon from '../components/Icon.astro';
 import { site } from '../lib/site';
 
 const wa = `https://wa.me/${site.whatsapp.e164}?text=${encodeURIComponent('Hello Bloomridge Springs, I would like to ask about an assessment for my child.')}`;
-const maps = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.address.mapsQuery)}`;
-const embed = `https://www.google.com/maps?q=${encodeURIComponent(site.address.mapsQuery)}&output=embed`;
+const maps = site.map.link;
+const embed = site.map.embed;
 const jsonLd = [{
   '@context': 'https://schema.org', '@type': 'ContactPage',
   name: 'Contact Bloomridge Springs',
@@ -45,7 +45,7 @@ const jsonLd = [{
         </div>
       </div>
       <div class="map">
-        <iframe src={embed} title="Map showing Bloomridge Springs in Banasree, Dhaka" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+        <iframe src={embed} title="Map showing Bloomridge Springs in Banasree, Dhaka" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </div>
   </section>

@@ -44,6 +44,8 @@ const org = {
     postalCode: site.address.postcode,
     addressCountry: site.address.country,
   },
+  geo: { '@type': 'GeoCoordinates', latitude: site.map.lat, longitude: site.map.lng },
+  hasMap: site.map.link,
   areaServed: { '@type': 'City', name: 'Dhaka' },
   knowsAbout: ['Early intervention', 'School readiness', 'Speech and language therapy', 'Occupational therapy', 'Special education', 'Child development'],
   ...(site.social.facebook ? { sameAs: [site.social.facebook] } : {}),
