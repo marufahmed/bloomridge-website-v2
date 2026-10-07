@@ -6,7 +6,7 @@ export const site = {
   tagline: 'Every child belongs, every child blooms',
   url: 'https://www.bloomridgesprings.com',
   description:
-    'A child-development centre in Banasree, Dhaka. Early intervention and school readiness for children aged 2 to 10: speech and language therapy, occupational therapy, special education and psychologist-led group sessions, in one small classroom team.',
+    'Integrated early development and school readiness in Banasree, Dhaka, for children aged 2 to 10: school, speech and language therapy, occupational therapy, special education, creative and expressive arts, parent coaching and a psychologist-led group, all in one place.',
   locale: 'en_GB',
   address: {
     street: 'Floor 1, House 1/1, Road 7, Block F',

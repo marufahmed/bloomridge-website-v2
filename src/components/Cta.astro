@@ -1,11 +1,18 @@
 ---
 import { site } from '../lib/site';
 import Icon from './Icon.astro';
+import { langOf } from '../lib/i18n';
 interface Props { title?: string; text?: string }
+const bn = langOf(Astro.url.pathname) === 'bn';
 const {
-  title = 'Is this the right start for your child?',
-  text = 'Call or message us. We will talk through what you are seeing, and if it makes sense, book a strengths-first assessment.',
+  title = bn ? 'আপনার শিশুর জন্য কি এটাই সঠিক শুরু?' : 'Is this the right start for your child?',
+  text = bn
+    ? 'ফোন বা WhatsApp করুন। আপনি যা দেখছেন তা আমরা মন দিয়ে শুনব, সত্যি কথা বলব ব্লুমরিজ আপনার শিশুর জন্য উপযুক্ত কি না, আর প্রয়োজন হলে একটি অ্যাসেসমেন্ট ঠিক করব।'
+    : 'Call or message us. We will talk through what you are seeing, and if it makes sense, book a strengths-first assessment.',
 } = Astro.props;
+const waText = bn
+  ? 'হ্যালো ব্লুমরিজ স্প্রিংস, আমার শিশুর অ্যাসেসমেন্টের ব্যাপারে জানতে চাই।'
+  : 'Hello Bloomridge Springs, I would like to ask about an assessment for my child.';
 ---
 <section class="band band--pine cta">
   <div class="wrap inner">
@@ -14,9 +21,9 @@ const {
       <p class="lead">{text}</p>
     </div>
     <div class="actions">
-      <a class="btn btn--accent" href={`https://wa.me/${site.whatsapp.e164}?text=${encodeURIComponent('Hello Bloomridge Springs, I would like to ask about an assessment for my child.')}`} rel="noopener"><Icon name="whatsapp" /> WhatsApp us</a>
+      <a class="btn btn--accent" href={`https://wa.me/${site.whatsapp.e164}?text=${encodeURIComponent(waText)}`} rel="noopener"><Icon name="whatsapp" /> {bn ? 'WhatsApp করুন' : 'WhatsApp us'}</a>
       <a class="btn btn--ghost" href={`tel:${site.phones[0].e164}`}><Icon name="phone" /> {site.phones[0].display}</a>
-      <a class="link" href="/contact/">All the ways to reach us</a>
+      <a class="link" href={bn ? '/bn/#contact' : '/contact/'}>{bn ? 'যোগাযোগের সব উপায়' : 'All the ways to reach us'}</a>
     </div>
   </div>
 </section>

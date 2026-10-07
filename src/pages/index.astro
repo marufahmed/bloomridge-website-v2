@@ -20,19 +20,23 @@ const therapies = [
   ['speech', 'Speech therapy in Dhaka', 'Early language, clear speech and, above all, a way for your child to be understood.', '/speech-therapy-dhaka/'],
   ['book', 'Special education in Dhaka', 'One-to-one teaching at your child’s own pace: reading, writing, numbers, and how to learn in a room with others.', '/special-education-dhaka/'],
   ['group', 'Psychologist-led social skills group', 'Turn-taking, waiting, sharing, noticing feelings. The social skills a child uses every single day.', '/social-skills-group-dhaka/'],
+  ['sparkle', 'Autism support in Banasree', 'Every therapy and a small classroom in one team, working from one profile of your child, with or without a diagnosis.', '/autism-support-dhaka/'],
+  ['pin', 'Our centre in Banasree', 'Road 7, Block F. Families come from Rampura, Aftabnagar, Khilgaon and across east Dhaka.', '/banasree/'],
 ] as const;
+const pillars = ['School', 'Speech & Language', 'Occupational Therapy', 'Special Education', 'Creative & Expressive Arts', 'Parent Coaching', 'Developmental Tracking', 'Collaborative Care'];
 ---
-<Base title="Child Development Centre in Dhaka: Speech Therapy, Occupational Therapy, Special Education" description="Bloomridge Springs is a child-development centre in Banasree, Dhaka for children aged 2 to 10. Speech therapy, occupational therapy, special education and a psychologist-led group in one small classroom team, with a weekly review for parents.">
+<Base title="Child Development Centre in Banasree, Dhaka: Speech Therapy, OT, Special Education" description="Speech therapy, occupational therapy, special education and a small classroom for ages 2 to 10 in Banasree, Dhaka. All in one place, with a weekly parent review.">
   <section class="hero band--pine">
     <div class="wrap hero-grid">
       <div class="hero-text">
-        <p class="kicker" data-rise="1">A child-development centre in Banasree, Dhaka</p>
+        <p class="kicker" data-rise="1">Integrated early development and school readiness · Banasree, Dhaka</p>
         <h1 data-rise="2">Every child belongs.<br />Every child blooms.</h1>
-        <p class="lead" data-rise="3">Speech and language therapy, occupational therapy and special education for children aged 2 to 10, in one small classroom team that talks to each other every day, and to you every week.</p>
+        <p class="lead" data-rise="3">The child’s developmental journey, all in one place. We bring learning, therapy and everyday development together, so every child aged 2 to 10 can grow, connect, communicate and thrive.</p>
         <div class="actions" data-rise="4">
           <a class="btn btn--accent" href="/contact/">Book an assessment</a>
           <a class="btn btn--ghost" href="/how-we-work/">How we work</a>
         </div>
+        <ul class="pillars" data-rise="4">{pillars.map((p) => <li>{p}</li>)}</ul>
       </div>
       <div class="hero-art" data-bloom>
         <div class="arch">
@@ -83,7 +87,7 @@ const therapies = [
 
   <section class="band">
     <div class="wrap">
-      <h2>Therapies in Banasree, Dhaka, explained by what they do for your child</h2>
+      <h2>Therapies in Banasree, Dhaka, under one roof</h2>
       <div class="grid grid--2 therapies">
         {therapies.map(([icon, name, desc, href]) => (
           <a class="therapy" href={href}>
@@ -140,6 +144,8 @@ const therapies = [
   .hero h1 { font-size: var(--display); color: var(--cream); margin-bottom: 1.25rem; }
   .hero .lead { color: rgba(251, 248, 241, 0.85); }
   .hero-art .arch { aspect-ratio: 4 / 4.6; border-radius: 999px 999px 0 0; }
+  .pillars { list-style: none; padding: 0; margin: 1.75rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pillars li { padding: 0.3rem 0.85rem; border-radius: 999px; border: 1px solid rgba(242, 183, 95, 0.5); color: var(--gold); font-size: 0.88rem; }
   .watermark { position: absolute; left: -8vw; bottom: -12vw; width: 46vw; max-width: 34rem; opacity: 0.05; pointer-events: none; }
 
   .two { max-width: 46rem; margin-bottom: 2.5rem; }

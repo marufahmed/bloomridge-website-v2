@@ -1,0 +1,127 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Cta from '../../../components/Cta.astro';
+import { site } from '../../../lib/site';
+import { cover, alt } from '../../../lib/images';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('articlesBn', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+
+interface Props { post: CollectionEntry<'articlesBn'> }
+const { post } = Astro.props;
+const { Content, remarkPluginFrontmatter } = await render(post);
+const d = post.data;
+const date = (x: Date) => x.toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' });
+const words = post.body?.split(/\s+/).length ?? 0;
+const minutes = Math.max(1, Math.round(words / 220));
+
+const all = (await getCollection('articlesBn', ({ data }) => !data.draft))
+  .filter((p) => p.id !== post.id)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+const related = [
+  ...all.filter((p) => p.data.tags.some((t) => d.tags.includes(t))),
+  ...all,
+].filter((p, i, arr) => arr.indexOf(p) === i).slice(0, 3);
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: d.title,
+    description: d.description,
+    image: `${site.url}/og/${d.cover}.jpg`,
+    datePublished: d.pubDate.toISOString(),
+    dateModified: (d.updatedDate ?? d.pubDate).toISOString(),
+    author: { '@type': 'Organization', name: site.name, url: site.url },
+    publisher: { '@id': `${site.url}/#organization` },
+    mainEntityOfPage: `${site.url}/bn/resources/${post.id}/`,
+    keywords: d.tags.join(', '),
+    wordCount: words,
+    inLanguage: 'bn',
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'হোম', item: `${site.url}/bn/` },
+      { '@type': 'ListItem', position: 2, name: 'গাইড', item: `${site.url}/bn/resources/` },
+      { '@type': 'ListItem', position: 3, name: d.title, item: `${site.url}/bn/resources/${post.id}/` },
+    ],
+  },
+];
+---
+<Base title={d.title} description={d.description} type="article" ogImage={d.cover} jsonLd={jsonLd} article={{ published: d.pubDate, modified: d.updatedDate, tags: [...d.tags] }}>
+  <article>
+    <header class="band band--paper head">
+      <div class="wrap">
+        <p class="crumbs"><a href="/bn/resources/">অভিভাবকদের গাইড</a></p>
+        <h1>{d.title}</h1>
+        <p class="lead">{d.description}</p>
+        <p class="meta">
+          <time datetime={d.pubDate.toISOString()}>{date(d.pubDate)}</time>
+          {d.updatedDate && <span> (হালনাগাদ {date(d.updatedDate)})</span>}
+          <span> · {minutes.toLocaleString('bn-BD')} মিনিটে পড়া</span>
+        </p>
+        <div class="arch arch--wide hero-img">
+          <Image src={cover(d.cover)} alt={alt[d.cover] ?? ''} widths={[720, 1080, 1536]} sizes="(min-width: 74rem) 1184px, 100vw" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+    </header>
+
+    <div class="band band--tight">
+      <div class="wrap body">
+        <div class="prose">
+          <Content />
+        </div>
+        <aside class="side">
+          <p class="side-h">ব্লুমরিজ স্প্রিংস</p>
+          <p class="side-p">সমন্বিত শিশুবিকাশ ও স্কুল প্রস্তুতি। বনশ্রী, ঢাকায় ২ থেকে ১০ বছরের শিশুদের জন্য স্কুল, স্পিচ থেরাপি, অকুপেশনাল থেরাপি ও বিশেষ শিক্ষা, একই ছাদের নিচে।</p>
+          <a class="btn btn--primary" href={`https://wa.me/${site.whatsapp.e164}`} rel="noopener">WhatsApp করুন</a>
+          <p class="side-h">সেবাসমূহ</p>
+          <ul class="side-links">
+            <li><a href="/bn/speech-therapy-dhaka/">স্পিচ থেরাপি</a></li>
+            <li><a href="/bn/occupational-therapy-dhaka/">অকুপেশনাল থেরাপি</a></li>
+            <li><a href="/bn/special-education-dhaka/">বিশেষ শিক্ষা</a></li>
+            <li><a href="/bn/social-skills-group-dhaka/">সোশ্যাল স্কিলস গ্রুপ</a></li>
+            <li><a href="/bn/autism-support-dhaka/">অটিজম সহায়তা</a></li>
+          </ul>
+                  </aside>
+      </div>
+    </div>
+  </article>
+
+  <section class="band band--sand">
+    <div class="wrap">
+      <h2>আরও পড়ুন</h2>
+      <ul class="guides">{related.map((p) => <li><a href={`/bn/resources/${p.id}/`}><b>{p.data.title}</b><small>{p.data.description}</small></a></li>)}</ul>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .head { padding-bottom: 0; }
+  .crumbs { font-size: var(--small); margin-bottom: 1rem; }
+  .crumbs a { color: var(--accent-deep); }
+  h1 { max-width: 20ch; }
+  .hero-img { margin-top: 2rem; transform: translateY(2.5rem); aspect-ratio: 21 / 9; }
+  .body { display: grid; gap: 3rem; padding-top: 2.5rem; }
+  @media (min-width: 64rem) { .body { grid-template-columns: minmax(0, 1fr) 17rem; gap: 5rem; } }
+  .side { align-self: start; position: sticky; top: 5.5rem; }
+  .side-h { font-family: var(--serif); font-size: 1.15rem; color: var(--pine); margin: 0 0 0.5rem; }
+  .side-p { font-size: var(--small); color: var(--muted); }
+  .side .btn { margin: 0.25rem 0 2rem; }
+  .side .tags a { text-decoration: none; text-transform: capitalize; }
+  .side-links { list-style: none; padding: 0; margin: 0 0 1.75rem; display: grid; gap: 0.4rem; font-size: var(--small); }
+  .side-links a { text-decoration: none; }
+  .side-links a:hover { text-decoration: underline; }
+  .guides { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+  .guides a { display: block; padding: 1.5rem; border-radius: 20px; background: var(--paper); text-decoration: none; height: 100%; }
+  .guides b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--pine); margin-bottom: 0.4rem; }
+  .guides small { color: var(--muted); font-size: var(--small); }
+</style>

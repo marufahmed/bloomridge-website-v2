@@ -1,7 +1,58 @@
 ---
 import { site } from '../lib/site';
+import { langOf } from '../lib/i18n';
 import Icon from './Icon.astro';
 const year = new Date().getFullYear();
+const bn = langOf(Astro.url.pathname) === 'bn';
+const t = bn
+  ? {
+      about: 'সমন্বিত শিশুবিকাশ ও স্কুল প্রস্তুতি। ২ থেকে ১০ বছরের শিশুদের জন্য স্কুল, স্পিচ থেরাপি, অকুপেশনাল থেরাপি ও বিশেষ শিক্ষা, একই ছাদের নিচে।',
+      tag: 'প্রতিটি শিশু গুরুত্বপূর্ণ।',
+      visit: 'ঠিকানা ও যোগাযোগ',
+      services: 'সেবাসমূহ',
+      parents: 'অভিভাবকদের জন্য',
+      links: [
+        ['/bn/speech-therapy-dhaka/', 'স্পিচ ও ল্যাঙ্গুয়েজ থেরাপি'],
+        ['/bn/occupational-therapy-dhaka/', 'অকুপেশনাল থেরাপি'],
+        ['/bn/special-education-dhaka/', 'বিশেষ শিক্ষা'],
+        ['/bn/social-skills-group-dhaka/', 'সোশ্যাল স্কিলস গ্রুপ'],
+        ['/bn/autism-support-dhaka/', 'অটিজম সহায়তা'],
+      ],
+      parentLinks: [
+        ['/bn/resources/', 'অভিভাবকদের গাইড'],
+        ['/bn/faq/', 'প্রশ্নোত্তর'],
+        ['/bn/#contact', 'যোগাযোগ'],
+        ['/', 'English website'],
+      ],
+      legal: 'আমরা ডায়াগনসিস থাকুক বা না থাকুক, সব শিশুকেই সহায়তা করি। আমরা চিকিৎসাগত ডায়াগনসিস বা চিকিৎসা দিই না।',
+    }
+  : {
+      about: `Integrated early development and school readiness for children aged ${site.ages.min} to ${site.ages.max}: school, speech and language therapy, occupational therapy and special education, all in one place.`,
+      tag: `${site.tagline}.`,
+      visit: 'Visit',
+      services: 'Programs and services',
+      parents: 'For parents',
+      links: [
+        ['/early-intervention/', 'Early Intervention Program'],
+        ['/school-readiness/', 'School Readiness Program'],
+        ['/speech-therapy-dhaka/', 'Speech therapy in Banasree'],
+        ['/occupational-therapy-dhaka/', 'Occupational therapy in Banasree'],
+        ['/special-education-dhaka/', 'Special education in Banasree'],
+        ['/autism-support-dhaka/', 'Autism support in Banasree'],
+        ['/social-skills-group-dhaka/', 'Social skills group'],
+        ['/fees/', 'Plans and monthly fees'],
+      ],
+      parentLinks: [
+        ['/resources/', 'Articles and guides'],
+        ['/faq/', 'Questions parents ask'],
+        ['/banasree/', 'Child therapy centre in Banasree'],
+        ['/how-we-work/', 'How we work'],
+        ['/about/', 'About the centre'],
+        ['/contact/', 'Book an assessment'],
+        ['/bn/', 'বাংলা ওয়েবসাইট'],
+      ],
+      legal: 'We support children with or without a diagnosis and do not provide medical diagnosis or treatment.',
+    };
 ---
 <footer class="band--deep footer">
   <div class="wrap">
@@ -9,11 +60,11 @@ const year = new Date().getFullYear();
       <div class="who">
         <img src="/brand/logo-cream.png" width="44" height="51" alt="" loading="lazy" />
         <p class="name">Bloomridge <em>Springs</em></p>
-        <p class="tag">{site.tagline}.</p>
-        <p class="small">A child-development centre for children aged {site.ages.min} to {site.ages.max}. Early intervention and school readiness, with occupational therapy, speech and language therapy and special education in one team.</p>
+        <p class="tag">{t.tag}</p>
+        <p class="small">{t.about}</p>
       </div>
       <div>
-        <h2 class="h">Visit</h2>
+        <h2 class="h">{t.visit}</h2>
         <address>
           {site.address.street}<br />{site.address.area}, {site.address.city} {site.address.postcode}
         </address>
@@ -21,32 +72,24 @@ const year = new Date().getFullYear();
           {site.phones.map((p) => <li><a href={`tel:${p.e164}`}><Icon name="phone" /> {p.display}</a></li>)}
           <li><a href={`https://wa.me/${site.whatsapp.e164}`} rel="noopener"><Icon name="whatsapp" /> WhatsApp</a></li>
           <li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li>
+          <li><a href={site.map.link} rel="noopener"><Icon name="pin" /> Google Maps</a></li>
+          {site.social.facebook && <li><a href={site.social.facebook} rel="noopener">Facebook</a></li>}
         </ul>
       </div>
       <div>
-        <h2 class="h">Programs and services</h2>
+        <h2 class="h">{t.services}</h2>
         <ul class="plain">
-          <li><a href="/early-intervention/">Early Intervention Program</a></li>
-          <li><a href="/school-readiness/">School Readiness Program</a></li>
-          <li><a href="/speech-therapy-dhaka/">Speech therapy in Dhaka</a></li>
-          <li><a href="/occupational-therapy-dhaka/">Occupational therapy in Dhaka</a></li>
-          <li><a href="/special-education-dhaka/">Special education in Dhaka</a></li>
-          <li><a href="/social-skills-group-dhaka/">Social skills group</a></li>
-          <li><a href="/fees/">Plans and monthly fees</a></li>
-          <li><a href="/how-we-work/">How we work</a></li>
+          {t.links.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
         </ul>
       </div>
       <div>
-        <h2 class="h">For parents</h2>
+        <h2 class="h">{t.parents}</h2>
         <ul class="plain">
-          <li><a href="/resources/">Articles and guides</a></li>
-          <li><a href="/about/">About the centre</a></li>
-          <li><a href="/contact/">Book an assessment</a></li>
-          <li><a href="/rss.xml">RSS feed</a></li>
+          {t.parentLinks.map(([href, label]) => <li><a href={href}>{label}</a></li>)}
         </ul>
       </div>
     </div>
-    <p class="legal">&copy; {year} {site.name}, {site.address.area}, {site.address.city}. We support children with or without a diagnosis and do not provide medical diagnosis or treatment.</p>
+    <p class="legal">&copy; {year} {site.name}, {site.address.area}, {site.address.city}. {t.legal}</p>
   </div>
 </footer>
 

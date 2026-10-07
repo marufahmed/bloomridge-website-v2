@@ -1,33 +1,32 @@
 ---
 import { site } from '../lib/site';
+import { langOf, twinOf, ui } from '../lib/i18n';
 const path = Astro.url.pathname;
-const nav = [
-  ['/early-intervention/', 'Early intervention'],
-  ['/school-readiness/', 'School readiness'],
-  ['/therapies/', 'Therapies'],
-  ['/how-we-work/', 'How we work'],
-  ['/fees/', 'Fees'],
-  ['/resources/', 'Resources'],
-  ['/about/', 'About'],
-];
-const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href));
+const lang = langOf(path);
+const t = ui[lang];
+const other = lang === 'en' ? 'bn' : 'en';
+const switchHref = twinOf(path)[other] ?? (other === 'bn' ? '/bn/' : '/');
+const home = lang === 'bn' ? '/bn/' : '/';
+const isActive = (href: string) => path === href || (href !== home && path.startsWith(href));
 ---
 <header class="site-header">
   <div class="wrap bar">
-    <a class="brand" href="/" aria-label={`${site.name} home`}>
+    <a class="brand" href={home} aria-label={`${site.name} home`}>
       <img src="/brand/logo-pine.png" width="34" height="40" alt="" />
       <span>Bloomridge <em>Springs</em></span>
     </a>
+    <a class="lang lang--bar" href={switchHref} hreflang={other} lang={other} title={t.switchTitle}>{t.switchLabel}</a>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">
       <span class="menu-line" aria-hidden="true"></span>
-      <span>Menu</span>
+      <span>{t.menu}</span>
     </button>
     <nav id="site-nav" class="nav" aria-label="Main">
       <ul>
-        {nav.map(([href, label]) => (
+        {t.nav.map(([href, label]) => (
           <li><a href={href} aria-current={isActive(href) ? 'page' : undefined}>{label}</a></li>
         ))}
-        <li class="nav-cta"><a class="btn btn--primary" href="/contact/">Book an assessment</a></li>
+        <li class="nav-lang"><a class="lang" href={switchHref} hreflang={other} lang={other} title={t.switchTitle}>{t.switchLabel}</a></li>
+        <li class="nav-cta"><a class="btn btn--primary" href={t.ctaHref}>{t.cta}</a></li>
       </ul>
     </nav>
   </div>
@@ -41,17 +40,23 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     border-bottom: 1px solid color-mix(in srgb, var(--hair) 70%, transparent);
   }
   .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.25rem; }
-  .brand { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: var(--serif); font-size: 1.3rem; color: var(--pine); letter-spacing: -0.01em; }
+  .brand { white-space: nowrap; flex: none; display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: var(--serif); font-size: 1.3rem; color: var(--pine); letter-spacing: -0.01em; }
   .brand em { font-style: italic; font-weight: 400; }
   .brand img { width: 30px; height: auto; }
   .nav ul { list-style: none; margin: 0; padding: 0; display: flex; gap: clamp(0.6rem, 1.4vw, 1.4rem); align-items: center; }
+  .nav a { white-space: nowrap; }
   .nav a:not(.btn) { text-decoration: none; font-size: 0.95rem; color: var(--ink); padding: 0.35rem 0; border-bottom: 2px solid transparent; }
   .nav a:not(.btn):hover, .nav a[aria-current='page'] { border-bottom-color: var(--accent); }
   .nav .btn { padding: 0.6rem 1.1rem; font-size: 0.92rem; }
+  .lang { font-size: 0.9rem; color: var(--pine); text-decoration: none; padding: 0.3rem 0.75rem !important; border: 1.5px solid var(--hair) !important; border-radius: 999px; white-space: nowrap; }
+  .lang:hover { border-color: var(--accent) !important; }
+  .lang--bar { display: none; margin-left: auto; }
   .menu-btn { display: none; align-items: center; gap: 0.6rem; background: none; border: 1.5px solid var(--pine); border-radius: 999px; padding: 0.45rem 0.9rem; font: inherit; font-size: 0.9rem; color: var(--pine); cursor: pointer; }
   .menu-line { width: 18px; height: 2px; background: currentColor; box-shadow: 0 -5px 0 currentColor, 0 5px 0 currentColor; }
-  @media (max-width: 62rem) {
+  @media (max-width: 72rem) {
     .menu-btn { display: inline-flex; }
+    .lang--bar { display: inline-block; }
+    .nav-lang { display: none; }
     .nav { display: none; position: absolute; left: 0; right: 0; top: 100%; background: var(--cream); border-bottom: 1px solid var(--hair); padding: 0.5rem var(--gutter) 1.25rem; }
     .nav[data-open] { display: block; }
     .nav ul { flex-direction: column; align-items: stretch; gap: 0; }

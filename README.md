@@ -31,6 +31,18 @@ push to `main`.
 
 Set `draft: true` to keep a piece out of the build while you work on it.
 
+### Bangla articles
+
+Same frontmatter, in `src/content/articles-bn/`. They publish at `/bn/resources/<file-name>/`.
+If an English article covers the same topic, add the pair to `pairs` in `src/lib/i18n.ts` so the
+two pages get `hreflang` links to each other and the header's language switch goes between them.
+
+## Bangla pages
+
+English is at the root and Bangla under `/bn/`. Bangla copy lives in `src/lib/site.bn.ts`
+(home and FAQ) and `src/lib/services.bn.ts` (service pages). Header, footer and call-to-action
+pick their language from the URL (`src/lib/i18n.ts`).
+
 ## Change the facts
 
 Name, address, phones, fees, plan names, program copy and the FAQ all live in

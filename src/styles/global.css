@@ -194,3 +194,14 @@ p { margin: 0 0 1.1em; max-width: 62ch; }
   html { scroll-behavior: auto; }
   .btn { transition: none; }
 }
+
+/* Bangla pages: Bengali faces first, the Latin brand faces still render
+   English words and numbers inside Bangla text. */
+html[lang='bn'] {
+  --serif: 'Noto Serif Bengali', 'Lora', Georgia, serif;
+  --sans: 'Hind Siliguri', 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+html[lang='bn'] body { line-height: 1.8; }
+html[lang='bn'] h1, html[lang='bn'] h2, html[lang='bn'] h3 { line-height: 1.35; letter-spacing: 0; }
+/* Bengali has no true italic; the synthesised slant reads as an error. */
+html[lang='bn'] :is(em, i, .kicker, .tag, .tagline) { font-style: normal; }

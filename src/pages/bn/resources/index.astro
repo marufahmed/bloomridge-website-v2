@@ -1,0 +1,34 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../../layouts/Base.astro';
+import Cta from '../../../components/Cta.astro';
+
+const posts = (await getCollection('articlesBn', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+<Base title="অভিভাবকদের গাইড: শিশুর কথা, অটিজম, থেরাপি ও স্কুল প্রস্তুতি" description="শিশু দেরিতে কথা বলা, অটিজমের প্রাথমিক লক্ষণ, অকুপেশনাল থেরাপি, স্কুল প্রস্তুতি আর থেরাপি সেন্টার বাছাই নিয়ে বাংলায় সহজ গাইড, বনশ্রীর ব্লুমরিজ স্প্রিংস থেকে।">
+  <section class="band band--paper">
+    <div class="wrap">
+      <p class="kicker">অভিভাবকদের গাইড</p>
+      <h1>যে প্রশ্নগুলো মা-বাবা সবচেয়ে বেশি করেন</h1>
+      <p class="lead">শিশুর কথা, আচরণ, শেখা আর স্কুল নিয়ে সহজ বাংলায়, বাস্তব পরামর্শ।</p>
+    </div>
+  </section>
+  <section class="band band--tight">
+    <div class="wrap">
+      <ul class="guides">
+        {posts.map((p) => <li><a href={`/bn/resources/${p.id}/`}><b>{p.data.title}</b><small>{p.data.description}</small></a></li>)}
+      </ul>
+      <p class="after"><a href="/resources/" lang="en">Guides in English</a></p>
+    </div>
+  </section>
+  <Cta />
+</Base>
+
+<style>
+  .guides { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+  .guides a { display: block; padding: 1.5rem; border-radius: 20px; background: var(--sand); text-decoration: none; height: 100%; }
+  .guides b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.2rem; color: var(--pine); margin-bottom: 0.4rem; }
+  .guides small { color: var(--muted); font-size: var(--small); }
+  .after { margin-top: 2rem; }
+</style>

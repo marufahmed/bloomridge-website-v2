@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import { site } from '../lib/site';
 import { services } from '../lib/services';
+import { langOf, twinOf, ui } from '../lib/i18n';
 
 interface Props {
   title: string;
@@ -22,6 +23,9 @@ const {
 } = Astro.props;
 
 const canonical = new URL(Astro.url.pathname, site.url).href;
+const lang = langOf(Astro.url.pathname);
+const twin = twinOf(Astro.url.pathname);
+const alternates = twin.en && twin.bn ? [['en', twin.en], ['bn', twin.bn], ['x-default', twin.en]] : [];
 const fullTitle = `${title} | ${site.name}`;
 const ogUrl = new URL(`/og/${ogImage}.jpg`, site.url).href;
 
@@ -48,6 +52,7 @@ const org = {
   geo: { '@type': 'GeoCoordinates', latitude: site.map.lat, longitude: site.map.lng },
   hasMap: site.map.link,
   areaServed: [{ '@type': 'City', name: 'Dhaka' }, ...site.areas.map((name) => ({ '@type': 'Place', name: `${name}, Dhaka` }))],
+  alternateName: 'ব্লুমরিজ স্প্রিংস',
   knowsAbout: ['Early intervention', 'School readiness', 'Speech and language therapy', 'Occupational therapy', 'Special education', 'Child development', 'Autism support', 'Sensory processing'],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
@@ -66,25 +71,26 @@ const website = {
   url: site.url,
   name: site.name,
   publisher: { '@id': `${site.url}/#organization` },
-  inLanguage: 'en',
+  inLanguage: ['en', 'bn'],
 };
 const graph = [org, website, ...jsonLd];
 ---
 <!doctype html>
-<html lang="en" data-accent={accent}>
+<html lang={lang} data-accent={accent}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {alternates.map(([hl, href]) => <link rel="alternate" hreflang={hl} href={new URL(href, site.url).href} />)}
     {noindex && <meta name="robots" content="noindex, nofollow" />}
     <meta name="theme-color" content="#0f3a32" />
     <meta name="color-scheme" content="light" />
 
     <meta property="og:type" content={type} />
     <meta property="og:site_name" content={site.name} />
-    <meta property="og:locale" content={site.locale} />
+    <meta property="og:locale" content={lang === 'bn' ? 'bn_BD' : site.locale} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
@@ -115,11 +121,12 @@ const graph = [org, website, ...jsonLd];
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600&display=swap" />
+    {lang === 'bn' && <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600&family=Noto+Serif+Bengali:wght@400;500;600&display=swap" />}
 
     <script type="application/ld+json" set:html={JSON.stringify(graph)} />
   </head>
   <body>
-    <a class="skip" href="#main">Skip to content</a>
+    <a class="skip" href="#main">{ui[lang].skip}</a>
     <Header />
     <main id="main">
       <slot />

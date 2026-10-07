@@ -1,0 +1,58 @@
+---
+import Base from '../layouts/Base.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { site } from '../lib/site';
+import { faqGroups } from '../lib/faq';
+
+const all = faqGroups.flatMap((g) => g.items);
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: all.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Questions parents ask', item: `${site.url}/faq/` },
+    ],
+  },
+];
+---
+<Base title="Questions Parents Ask: Therapy, Autism and Fees in Banasree" description={`${all.length} straight answers on speech therapy, OT, special education, autism support, fees and the first assessment at Bloomridge Springs, Banasree, Dhaka.`} jsonLd={jsonLd}>
+  <section class="band band--paper">
+    <div class="wrap">
+      <p class="kicker">Questions parents ask</p>
+      <h1>Before you call: the questions we hear most</h1>
+      <p class="lead">Straight answers about late talking, autism, therapy, school, fees and what happens at the first visit. If yours is not here, WhatsApp {site.whatsapp.display} and ask.</p>
+      <nav class="toc" aria-label="Topics">
+        {faqGroups.map((g) => <a href={`#${g.id}`}>{g.title}</a>)}
+      </nav>
+    </div>
+  </section>
+
+  {faqGroups.map((g, i) => (
+    <section id={g.id} class:list={['band', 'band--tight', i % 2 ? 'band--sand' : '']}>
+      <div class="wrap">
+        <Faq items={g.items} title={g.title} />
+      </div>
+    </section>
+  ))}
+
+  <section class="band band--tight">
+    <div class="wrap">
+      <p>Read more: <a href="/speech-therapy-dhaka/">speech therapy</a>, <a href="/occupational-therapy-dhaka/">occupational therapy</a>, <a href="/special-education-dhaka/">special education</a>, <a href="/autism-support-dhaka/">autism support</a>, <a href="/fees/">plans and fees</a>, or <a href="/bn/faq/">প্রশ্নোত্তর বাংলায়</a>.</p>
+    </div>
+  </section>
+
+  <Cta />
+</Base>
+
+<style>
+  .toc { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+  .toc a { text-decoration: none; padding: 0.5rem 1rem; border-radius: 999px; background: var(--sand); color: var(--pine); font-size: 0.95rem; }
+  .toc a:hover { background: var(--accent-tint); }
+  section[id] { scroll-margin-top: 5rem; }
+</style>

@@ -12,7 +12,7 @@ export interface Service {
   h1: string;
   lead: string;
   cover: string;
-  icon: 'speech' | 'hand' | 'book' | 'group';
+  icon: 'speech' | 'hand' | 'book' | 'group' | 'sparkle';
   intro: string[];
   who: { title: string; items: string[] };
   what: { title: string; items: [string, string][] };
@@ -27,9 +27,9 @@ export const services: Service[] = [
     slug: 'speech-therapy-dhaka',
     name: 'Speech and language therapy',
     keyword: 'speech therapy in Dhaka',
-    title: 'Speech Therapy for Children in Dhaka',
+    title: 'Speech Therapy for Children in Banasree, Dhaka',
     description:
-      'Speech and language therapy for children aged 2 to 10 in Banasree, Dhaka. Late talkers, unclear speech, understanding and expressing language, with parent coaching and a weekly review.',
+      'Speech and language therapy for children aged 2 to 10 in Banasree, Dhaka: late talkers, unclear speech, understanding and expressing language, in Bangla and English.',
     h1: 'Speech therapy for children in Dhaka',
     lead: 'For the child who is not talking yet, the child whose words only the family understands, and the child who talks but cannot tell you what happened. Play-based sessions in Banasree, in Bangla and English.',
     cover: 'speech-therapy',
@@ -86,9 +86,9 @@ export const services: Service[] = [
     slug: 'occupational-therapy-dhaka',
     name: 'Occupational therapy',
     keyword: 'occupational therapy for children in Dhaka',
-    title: 'Occupational Therapy for Children in Dhaka',
+    title: 'Occupational Therapy for Children in Banasree, Dhaka',
     description:
-      'Paediatric occupational therapy in Banasree, Dhaka: sensory regulation, fine motor skills, handwriting readiness and daily independence for children aged 2 to 10, integrated with a small classroom.',
+      'Paediatric occupational therapy in Banasree, Dhaka: sensory regulation, fine motor skills, handwriting readiness and daily independence for ages 2 to 10.',
     h1: 'Occupational therapy for children in Dhaka',
     lead: 'For the child who cannot sit still, or cannot bear noise, or cannot yet hold a spoon or a pencil. Play that is secretly work, in a sensory room in Banasree.',
     cover: 'occupational-therapy',
@@ -145,9 +145,9 @@ export const services: Service[] = [
     slug: 'special-education-dhaka',
     name: 'Special education',
     keyword: 'special education in Dhaka',
-    title: 'Special Education Services in Dhaka',
+    title: 'Special Education School and Services in Banasree, Dhaka',
     description:
-      'Special education in Banasree, Dhaka for children aged 2 to 10: one-to-one teaching by trained special educators, a written trimester curriculum, individual education plans and a small classroom that rehearses real school.',
+      'Special education in Banasree, Dhaka for ages 2 to 10: one-to-one teaching, a written curriculum, individual education plans and a classroom of at most 15.',
     h1: 'Special education services in Dhaka',
     lead: 'One-to-one teaching at your child’s pace, a small classroom that feels like school, and an individual education plan that tells you exactly what is being taught and whether it moved.',
     cover: 'special-education',
@@ -204,9 +204,9 @@ export const services: Service[] = [
     slug: 'social-skills-group-dhaka',
     name: 'Psychologist-led social skills group',
     keyword: 'social skills group for children in Dhaka',
-    title: 'Social Skills Group for Children in Dhaka',
+    title: 'Social Skills Group for Children in Banasree, Dhaka',
     description:
-      'A weekly psychologist-led social skills group in Banasree, Dhaka for children aged 2 to 10: turn-taking, peer play, emotional awareness and following group instructions, included in every Bloomridge plan.',
+      'A weekly psychologist-led social skills group in Banasree, Dhaka for ages 2 to 10: turn-taking, peer play, feelings and following group instructions.',
     h1: 'A psychologist-led social skills group in Dhaka',
     lead: 'For the child who plays alongside but not with, who cannot lose a game, or who does not yet notice how someone else feels. The skills no one-to-one session can teach, practised once a week with a child psychologist.',
     cover: 'group-session',
@@ -258,6 +258,67 @@ export const services: Service[] = [
       ['What do parents get from it?', 'Observations on the weekly review and specific things to try at home, such as how to set up a turn-taking game with a sibling.'],
     ],
     related: ['meltdowns-vs-tantrums', 'school-readiness-checklist', 'why-early-intervention-matters'],
+  },
+  {
+    slug: 'autism-support-dhaka',
+    name: 'Autism support',
+    keyword: 'autism support for children in Banasree, Dhaka',
+    title: 'Autism Support for Children in Banasree, Dhaka',
+    description:
+      'Support for autistic children aged 2 to 10 in Banasree, Dhaka: speech therapy, OT, special education and a small classroom in one team, diagnosis or not.',
+    h1: 'Autism support for children in Banasree, Dhaka',
+    lead: 'Speech therapy, occupational therapy, special education and a small classroom under one roof, working from one profile of your child. With or without a diagnosis.',
+    cover: 'early-intervention',
+    icon: 'sparkle',
+    intro: [
+      'Most families who ask us about autism support in Dhaka have spent months moving between places: a speech therapist in one part of the city, an occupational therapy clinic in another, a school that is not sure what to do, and nobody talking to anybody. Every one of those people may be good at their job. The child still gets four different plans.',
+      'Bloomridge Springs puts the whole developmental journey in one place. An autistic child here has a speech and language therapist, an occupational therapist, special educators, a child psychologist leading a weekly group and a small classroom, all working from one Student Profile and talking at the end of every day. Families come from Banasree, Rampura, Aftabnagar, Khilgaon and across east Dhaka.',
+    ],
+    who: {
+      title: 'Who we work with',
+      items: [
+        'Children aged 2 to 10 with a diagnosis of autism, or a query about autism that has not been assessed yet.',
+        'Children who are not talking yet, or who use words but not to share or ask.',
+        'Children who are overwhelmed by noise, touch or crowds, or who seek constant movement.',
+        'Children who play alone, line things up, or find changes to routine very hard.',
+        'Children who have been asked to leave a school, or who are struggling in one.',
+        'Families who want one written plan, measurable goals and a weekly account of progress.',
+      ],
+    },
+    what: {
+      title: 'What support looks like across the week',
+      items: [
+        ['Communication', 'Speech and language therapy for understanding, first words and requests, with gestures, signs and pictures used alongside speech, never instead of it.'],
+        ['Regulation', 'Occupational therapy to find the sensory input that settles your child, and a plan for the classroom and for home.'],
+        ['Learning', 'One-to-one special education at your child’s pace, and a classroom of at most 15 children to use those skills in.'],
+        ['Social connection', 'A weekly psychologist-led group for turn-taking, joining in and noticing others, in a small, predictable setting.'],
+        ['Everyday independence', 'Eating, dressing, toileting and moving between activities, broken into steps small enough to succeed at.'],
+        ['Parent coaching', 'A weekly review with you, and 2 or 3 concrete things to try at home. What works at the centre has to work at home too.'],
+      ],
+    },
+    session: {
+      title: 'Strengths first, not deficits first',
+      text: [
+        'We start by mapping what your child already does well and what motivates them: the favourite toy, the song that calms, the thing they will work for. That becomes the foundation of the plan, because skills are built on interests, not on a list of problems.',
+        'Every goal is scored on a 4-step scale, emerging, developing, consistent, independent, so you can see movement week by week rather than wait for a report.',
+      ],
+    },
+    fit: {
+      title: 'What we do not do',
+      text: [
+        'We do not diagnose autism, and we do not promise a cure. A diagnosis comes from a developmental paediatrician or a child neurologist, and we will tell you plainly if an assessment like that would help. Support does not have to wait for it.',
+        'Plans run in 3-month blocks with an assessment month after each one, and the mix of therapies is adjusted every week from the same profile.',
+      ],
+    },
+    faq: [
+      ['Do you need an autism diagnosis to join?', 'No. We assess what your child can do and write the plan from that. If a developmental paediatrician’s opinion would help, we will say so.'],
+      ['Is Bloomridge an autism school?', 'It is a child-development centre with a small classroom, therapy and special education in one team. Many of our children are autistic; many are not. Every child is placed by need.'],
+      ['My child is 2 and shows signs of autism. Is it too early?', 'No. The years from 2 to 6 are when support makes the biggest difference, and you do not need to wait for a diagnosis to start.'],
+      ['Which therapies will my child get?', 'Speech therapy, occupational therapy and special education in a mix set from the Student Profile, plus the weekly group and 4 school sessions. The mix changes as needs change.'],
+      ['How much does it cost?', 'Three monthly plans, Tk 18,000, Tk 22,000 and Tk 26,000, differing only in the number of one-to-one sessions. The fees page lists what each includes.'],
+      ['Is therapy in Bangla or English?', 'Both. We work in the language your child hears most at home.'],
+    ],
+    related: ['why-early-intervention-matters', 'sensory-processing-explained', 'meltdowns-vs-tantrums'],
   },
 ];
 

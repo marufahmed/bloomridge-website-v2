@@ -1,0 +1,126 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { site, plans, tk } from '../lib/site';
+import { services } from '../lib/services';
+
+const faq: [string, string][] = [
+  ['Where in Banasree is Bloomridge Springs?', `${site.address.full}. Search "Bloomridge Springs" on Google Maps for directions.`],
+  ['Is there speech therapy for children in Banasree?', 'Yes. Our speech and language therapist works with late talkers, unclear speech, understanding and expressing language, for children aged 2 to 10, in Bangla and English.'],
+  ['Is there a special education school in Banasree?', 'Bloomridge Springs runs a small classroom of at most 15 children with one-to-one special education, a written curriculum and an individual education plan for every child, alongside therapy.'],
+  ['Do you offer occupational therapy for autistic children in Banasree?', 'Yes. Occupational therapy for sensory regulation, fine motor skills and daily independence, with or without an autism diagnosis, planned together with speech therapy and special education.'],
+  ['Which areas do families come from?', `${site.areas.slice(0, -1).join(', ')} and ${site.areas.at(-1)}. The centre is a short rickshaw ride from Rampura bridge.`],
+  ['How do I book?', `Call or WhatsApp ${site.whatsapp.display}. We will talk through what you are seeing and book a strengths-first assessment.`],
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+  },
+  {
+    '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${site.url}/` },
+      { '@type': 'ListItem', position: 2, name: 'Child therapy centre in Banasree', item: `${site.url}/banasree/` },
+    ],
+  },
+];
+---
+<Base title="Child Therapy Centre in Banasree: Speech, OT, Special Education" description="Speech therapy, OT, special education and autism support for ages 2 to 10 in Block F, Banasree, Dhaka. All in one place, near Rampura, Aftabnagar and Khilgaon." ogImage="centre-exterior" jsonLd={jsonLd}>
+  <section class="band band--paper">
+    <div class="wrap split">
+      <div>
+        <p class="kicker">Block F, Banasree, Dhaka</p>
+        <h1>Speech therapy, occupational therapy and special education in Banasree</h1>
+        <p class="lead">Bloomridge Springs is a child-development centre on Road 7, Block F, for children aged {site.ages.min} to {site.ages.max}. School, therapy and everyday development, in one place, with one team that talks to each other every day and to you every week.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href={`https://wa.me/${site.whatsapp.e164}`} rel="noopener"><Icon name="whatsapp" /> WhatsApp {site.whatsapp.display}</a>
+          <a class="btn btn--ghost" href={site.map.link} rel="noopener"><Icon name="pin" /> Open in Google Maps</a>
+        </div>
+      </div>
+      <div class="map">
+        <iframe src={site.map.embed} title="Map showing Bloomridge Springs in Banasree, Dhaka" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="prose">
+        <h2>Why parents in east Dhaka choose one centre instead of three</h2>
+        <p>Families in Banasree, Rampura and Aftabnagar often end up with a speech therapist in one place, an occupational therapy clinic in another, and a school that does not know what either of them is doing. Each session may be good. The child still gets three plans that never meet.</p>
+        <p>At Bloomridge, the speech and language therapist, the occupational therapist, the special educators, the child psychologist who leads the weekly group and the classroom teachers all work from one Student Profile of your child. What is practised in a therapy session on Sunday is used in the classroom on Monday and sent home with you the same week.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap">
+      <h2>What is available at the Banasree centre</h2>
+      <ul class="svc">
+        {services.map((s) => (
+          <li>
+            <a href={`/${s.slug}/`}>
+              <span class="ico"><Icon name={s.icon} /></span>
+              <span><b>{s.name}</b><small>{s.description}</small></span>
+            </a>
+          </li>
+        ))}
+        <li>
+          <a href="/early-intervention/">
+            <span class="ico"><Icon name="leaf" /></span>
+            <span><b>Early Intervention Program, ages 2 to 6</b><small>Communication, regulation and first social skills, built before school asks for them.</small></span>
+          </a>
+        </li>
+        <li>
+          <a href="/school-readiness/">
+            <span class="ico"><Icon name="school" /></span>
+            <span><b>School Readiness Program, ages 4 to 10</b><small>Attention, reading, writing, numbers and the classroom routines that make school possible.</small></span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div class="prose">
+        <h2>Fees, in plain numbers</h2>
+        <p>Three monthly plans, the same for both programs: {plans.map((p) => `${p.name} ${tk(p.fee)}`).join(', ')}. They differ only in the number of one-to-one therapy sessions a week. Every plan includes four 2-hour school sessions, a 2-hour psychologist-led group session and a weekly review with you.</p>
+        <p><a href="/fees/">See exactly what each plan includes</a></p>
+      </div>
+      <div class="prose">
+        <h2>Getting here</h2>
+        <p>{site.address.full}. The centre is a short rickshaw ride from Rampura bridge, and parking is on the lane outside. Families come to us from {site.areas.slice(1, -1).join(', ')} and {site.areas.at(-1)}.</p>
+        <p>Call <a href={`tel:${site.phones[0].e164}`}>{site.phones[0].display}</a> or <a href={`tel:${site.phones[1].e164}`}>{site.phones[1].display}</a>, in Bangla or English.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap">
+      <Faq items={faq} title="Questions from families in Banasree" />
+      <p class="more"><a href="/faq/">All questions parents ask</a> · <a href="/bn/">বাংলায় পড়ুন</a></p>
+    </div>
+  </section>
+
+  <Cta title="Looking for child therapy in Banasree?" text="Call or WhatsApp. We will listen to what you are seeing, tell you honestly whether Bloomridge is the right place, and book a strengths-first assessment." />
+</Base>
+
+<style>
+  h1 { font-size: clamp(2.1rem, 1.5rem + 2.4vw, 3.4rem); }
+  .map { border-radius: 22px; overflow: hidden; min-height: 20rem; background: var(--sand); }
+  .map iframe { width: 100%; height: 100%; min-height: 20rem; border: 0; display: block; }
+  .svc { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); }
+  .svc a { display: grid; grid-template-columns: 2.75rem 1fr; gap: 1rem; padding: 1.25rem; border-radius: 18px; background: var(--paper); text-decoration: none; height: 100%; }
+  .svc a:hover { box-shadow: 0 0 0 2px var(--accent); }
+  .svc .ico { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--pine); color: var(--gold); display: grid; place-items: center; }
+  .svc .ico :global(svg) { width: 1.3rem; height: 1.3rem; }
+  .svc b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--pine); margin-bottom: 0.25rem; }
+  .svc small { display: block; font-size: var(--small); color: var(--muted); line-height: 1.5; }
+  .more { margin-top: 1.5rem; }
+</style>

@@ -1,0 +1,234 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Faq from '../../components/Faq.astro';
+import Cta from '../../components/Cta.astro';
+import { site, plans } from '../../lib/site';
+import { home, faq } from '../../lib/site.bn';
+import { cover, alt } from '../../lib/images';
+
+const bnNum = (n: number) => n.toLocaleString('bn-BD');
+const serviceLinks = [
+  ['speech', '/bn/speech-therapy-dhaka/'],
+  ['hand', '/bn/occupational-therapy-dhaka/'],
+  ['book', '/bn/special-education-dhaka/'],
+  ['group', '/bn/social-skills-group-dhaka/'],
+  ['sparkle', '/bn/autism-support-dhaka/'],
+] as const;
+// The homepage carries the questions about starting and about location; the
+// rest live on /bn/faq/.
+const homeFaq = [...faq[0].items.slice(0, 4), ...faq[3].items.slice(0, 2), ...faq[5].items.slice(0, 2)];
+const posts = (await getCollection('articlesBn', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+const wa = `https://wa.me/${site.whatsapp.e164}?text=${encodeURIComponent('হ্যালো ব্লুমরিজ স্প্রিংস, আমার শিশুর অ্যাসেসমেন্টের ব্যাপারে জানতে চাই।')}`;
+
+const jsonLd = [{
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  inLanguage: 'bn',
+  mainEntity: homeFaq.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })),
+}];
+---
+<Base title={home.title} description={home.description} jsonLd={jsonLd}>
+  <section class="hero band--pine">
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <p class="kicker">{home.kicker}</p>
+        <h1>{home.h1}</h1>
+        <p class="lead">{home.lead}</p>
+        <div class="actions">
+          <a class="btn btn--accent" href={wa} rel="noopener"><Icon name="whatsapp" /> WhatsApp করুন</a>
+          <a class="btn btn--ghost" href={`tel:${site.phones[0].e164}`}><Icon name="phone" /> {site.phones[0].display}</a>
+        </div>
+        <ul class="pillars">{home.pillars.map((p) => <li>{p}</li>)}</ul>
+      </div>
+      <div class="hero-art">
+        <div class="arch">
+          <Image src={cover('hero-classroom')} alt={alt['hero-classroom']} widths={[600, 900, 1400]} sizes="(min-width: 56rem) 44vw, 100vw" loading="eager" fetchpriority="high" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap split">
+      <div>
+        <h2>{home.roofH}</h2>
+        <p class="tagline">{home.tagline}</p>
+      </div>
+      <div class="prose">{home.roof.map((p) => <p>{p}</p>)}</div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="two">
+        <h2>{home.servicesH}</h2>
+        <p class="lead">{home.servicesLead}</p>
+      </div>
+      <div class="grid grid--2 therapies">
+        {home.services.map(([name, desc], i) => (
+          <a class="therapy" href={serviceLinks[i][1]}>
+            <span class="ico"><Icon name={serviceLinks[i][0]} /></span>
+            <div><h3>{name}</h3><p>{desc}</p></div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap">
+      <div class="two">
+        <h2>{home.programsH}</h2>
+        <p class="lead">{home.programsLead}</p>
+      </div>
+      <div class="programs">
+        {(['a', 'b'] as const).map((k) => (
+          <div class="program" data-accent={k}>
+            <p class="kicker">{home.programs[k].ages}</p>
+            <h3>{home.programs[k].name}</h3>
+            <p>{home.programs[k].lead}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap split">
+      <div>
+        <h2>{home.includedH}</h2>
+        <p class="lead">{home.includedLead}</p>
+      </div>
+      <ul class="included">
+        {home.included.map(([t, d, n, u]) => (
+          <li><span class="num">{n}</span><div><b>{t}</b><small>{u}</small><p>{d}</p></div></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap">
+      <h2>{home.loopH}</h2>
+      <ol class="loop">
+        {home.loop.map(([t, d]) => <li><b>{t}</b><p>{d}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="band band--sand">
+    <div class="wrap">
+      <div class="two">
+        <h2>{home.feesH}</h2>
+        <p class="lead">{home.feesLead}</p>
+      </div>
+      <div class="plans">
+        {home.plans.map((p, i) => (
+          <div class:list={['plan', { featured: plans[i].featured }]}>
+            <p class="kicker">{p.note}</p>
+            <h3>{p.name}</h3>
+            <p class="fee">৳{bnNum(plans[i].fee)} <small>/ মাস</small></p>
+            <p>{p.sessions}</p>
+          </div>
+        ))}
+      </div>
+      <p class="note">{home.feeNote}</p>
+    </div>
+  </section>
+
+  <section id="contact" class="band">
+    <div class="wrap split">
+      <div>
+        <h2>{home.areaH}</h2>
+        <p>{home.areaText}</p>
+        <ul class="ways">
+          <li><a href={wa} rel="noopener"><Icon name="whatsapp" /> WhatsApp {site.whatsapp.display}</a></li>
+          {site.phones.map((p) => <li><a href={`tel:${p.e164}`}><Icon name="phone" /> {p.display}</a></li>)}
+          <li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li>
+          <li><a href={site.map.link} rel="noopener"><Icon name="pin" /> Google Maps-এ দেখুন</a></li>
+        </ul>
+      </div>
+      <div class="map">
+        <iframe src={site.map.embed} title="বনশ্রীতে ব্লুমরিজ স্প্রিংসের ম্যাপ" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band--paper">
+    <div class="wrap">
+      <Faq items={homeFaq} title={home.faqH} />
+      <p class="after"><a href="/bn/faq/">সব প্রশ্নোত্তর দেখুন</a></p>
+    </div>
+  </section>
+
+  {posts.length > 0 && (
+    <section class="band">
+      <div class="wrap">
+        <h2>অভিভাবকদের জন্য গাইড</h2>
+        <ul class="guides">
+          {posts.map((p) => <li><a href={`/bn/resources/${p.id}/`}><b>{p.data.title}</b><small>{p.data.description}</small></a></li>)}
+        </ul>
+        <p class="after"><a href="/bn/resources/">সব গাইড</a></p>
+      </div>
+    </section>
+  )}
+
+  <Cta title={home.ctaH} text={home.ctaText} />
+</Base>
+
+<style>
+  .hero { padding-block: clamp(3rem, 6vw, 6rem) 0; }
+  .hero-grid { display: grid; gap: 2.5rem; align-items: end; }
+  @media (min-width: 56rem) { .hero-grid { grid-template-columns: 1.15fr 1fr; gap: 4rem; } }
+  .hero-text { padding-bottom: clamp(2.5rem, 6vw, 6rem); }
+  .hero h1 { font-size: clamp(2.1rem, 1.4rem + 3vw, 3.9rem); color: var(--cream); margin-bottom: 1.25rem; }
+  .hero .lead { color: rgba(251, 248, 241, 0.85); }
+  .hero-art .arch { aspect-ratio: 4 / 4.6; border-radius: 999px 999px 0 0; }
+  .pillars { list-style: none; padding: 0; margin: 1.5rem 0 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pillars li { padding: 0.3rem 0.85rem; border-radius: 999px; border: 1px solid rgba(242, 183, 95, 0.5); color: var(--gold); font-size: 0.92rem; }
+  .tagline { font-family: var(--serif); font-size: var(--lead); color: var(--accent-deep); }
+  .two { max-width: 46rem; margin-bottom: 2rem; }
+  .therapy { display: grid; grid-template-columns: 3.25rem 1fr; gap: 1.1rem; text-decoration: none; padding: 1.5rem 0; border-top: 1px solid var(--hair); }
+  .therapy .ico { width: 3.25rem; height: 3.25rem; border-radius: 50%; background: var(--pine); color: var(--gold); display: grid; place-items: center; }
+  .therapy .ico :global(svg) { width: 1.5rem; height: 1.5rem; }
+  .therapy h3 { font-size: 1.3rem; margin-bottom: 0.3rem; }
+  .therapy p { color: var(--muted); font-size: var(--small); margin: 0; }
+  .programs { display: grid; gap: 1.5rem; }
+  @media (min-width: 56rem) { .programs { grid-template-columns: 1fr 1fr; } }
+  .program { padding: 1.75rem; border-radius: 24px; background: var(--accent-tint); }
+  .program p:last-child { margin-bottom: 0; color: var(--muted); }
+  .included { list-style: none; padding: 0; margin: 0; display: grid; gap: 1.25rem; }
+  .included li { display: grid; grid-template-columns: 4.5rem 1fr; gap: 1rem; align-items: start; padding-bottom: 1.25rem; border-bottom: 1px solid var(--hair); }
+  .num { font-family: var(--serif); font-size: 2.6rem; line-height: 1; color: var(--accent-deep); }
+  .included b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.2rem; color: var(--pine); }
+  .included small { display: block; color: var(--accent-deep); font-size: var(--small); }
+  .included p { margin: 0.25rem 0 0; color: var(--muted); font-size: var(--small); }
+  .loop { list-style: none; counter-reset: s; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+  .loop li { counter-increment: s; padding: 1.5rem; border-radius: 20px; background: var(--sand); }
+  .loop li::before { content: counter(s, bengali); display: block; font-family: var(--serif); font-size: 2rem; color: var(--accent-deep); }
+  .loop b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--pine); margin: 0.25rem 0; }
+  .loop p { margin: 0; font-size: var(--small); color: var(--muted); }
+  .plans { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+  .plan { padding: 1.75rem; border-radius: 22px; background: var(--paper); border: 1.5px solid var(--hair); }
+  .plan.featured { border-color: var(--accent); }
+  .plan h3 { margin-bottom: 0.25rem; }
+  .fee { font-family: var(--serif); font-size: 2rem; color: var(--pine); margin: 0.25rem 0 0.5rem; }
+  .fee small { font-size: 1rem; color: var(--muted); }
+  .note { margin-top: 1.5rem; color: var(--muted); max-width: 62ch; }
+  .ways { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 0.6rem; }
+  .ways a { display: inline-flex; align-items: center; gap: 0.6rem; text-decoration: none; color: var(--pine); font-weight: 500; }
+  .ways :global(svg) { width: 1.2rem; height: 1.2rem; color: var(--accent-deep); }
+  .map { border-radius: 22px; overflow: hidden; min-height: 20rem; background: var(--sand); }
+  .map iframe { width: 100%; height: 100%; min-height: 20rem; border: 0; display: block; }
+  #contact { scroll-margin-top: 5rem; }
+  .guides { list-style: none; padding: 0; margin: 1.5rem 0 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
+  .guides a { display: block; padding: 1.5rem; border-radius: 20px; background: var(--sand); text-decoration: none; height: 100%; }
+  .guides b { display: block; font-family: var(--serif); font-weight: 500; font-size: 1.15rem; color: var(--pine); margin-bottom: 0.4rem; }
+  .guides small { color: var(--muted); font-size: var(--small); }
+  .after { margin-top: 1.5rem; }
+</style>
