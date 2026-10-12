@@ -71,7 +71,7 @@ const t = bn
         <ul class="plain">
           {site.phones.map((p) => <li><a href={`tel:${p.e164}`}><Icon name="phone" /> {p.display}</a></li>)}
           <li><a href={`https://wa.me/${site.whatsapp.e164}`} rel="noopener"><Icon name="whatsapp" /> WhatsApp</a></li>
-          <li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li>
+          <!--email_off--><li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li><!--/email_off-->
           <li><a href={site.map.link} rel="noopener"><Icon name="pin" /> Google Maps</a></li>
           {site.social.facebook && <li><a href={site.social.facebook} rel="noopener">Facebook</a></li>}
         </ul>

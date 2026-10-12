@@ -149,7 +149,7 @@ const jsonLd = [{
         <ul class="ways">
           <li><a href={wa} rel="noopener"><Icon name="whatsapp" /> WhatsApp {site.whatsapp.display}</a></li>
           {site.phones.map((p) => <li><a href={`tel:${p.e164}`}><Icon name="phone" /> {p.display}</a></li>)}
-          <li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li>
+          <!--email_off--><li><a href={`mailto:${site.email}`}><Icon name="mail" /> {site.email}</a></li><!--/email_off-->
           <li><a href={site.map.link} rel="noopener"><Icon name="pin" /> Google Maps-এ দেখুন</a></li>
         </ul>
       </div>
