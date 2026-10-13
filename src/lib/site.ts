@@ -25,16 +25,17 @@ export const site = {
     embed:
       'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.6531187788282!2d90.4364074!3d23.7597462!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6a5d42d2a63ac64f%3A0xc13cac43f85bf85!2sBloomridge%20Springs!5e0!3m2!1sen!2sbd!4v1789797669545!5m2!1sen!2sbd',
   },
-  phones: [
-    { display: '01685 559711', e164: '+8801685559711' },
-    { display: '01817 710777', e164: '+8801817710777' },
-  ],
-  whatsapp: { e164: '8801685559711', display: '01685 559711' },
+  // The centre's main line, and the only number the site shows.
+  phones: [{ display: '01341 125995', e164: '+8801341125995' }],
+  whatsapp: { e164: '8801341125995', display: '01341 125995' },
   email: 'bloomridgesprings@gmail.com',
   // Opening hours and social links are not in the brand files yet.
   // Fill these in and the contact page, footer and JSON-LD pick them up.
   hours: '' as string,
   social: { facebook: '' as string },
+  // Web3Forms access key (web3forms.com, free). With it set, every enquiry
+  // form submission is also emailed to the address the key was created for.
+  formKey: '73761c04-b939-4557-8e13-4fc5864d03b4' as string,
   // Meta Pixel ID from Events Manager. Leave empty to switch tracking off.
   metaPixel: '1075689351958457' as string,
   seats: 15,

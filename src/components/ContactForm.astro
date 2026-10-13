@@ -1,0 +1,207 @@
+---
+// Assessment enquiry form. The site is static, so there is no server to post
+// to: on submit the details open as a ready-to-send WhatsApp message to the
+// centre, and a copy goes to the inbox through Web3Forms when site.formKey is set.
+import { site } from '../lib/site';
+import Icon from './Icon.astro';
+import { langOf } from '../lib/i18n';
+
+const lang = langOf(Astro.url.pathname);
+const t = {
+  en: {
+    name: 'Your name',
+    phone: 'Your phone number',
+    age: 'Child’s age',
+    agePick: 'Choose an age',
+    under: 'Under 2',
+    over: 'Over 10',
+    years: (n: number) => `${n} years`,
+    area: 'Where you live',
+    areaHint: 'e.g. Banasree',
+    concerns: 'What are you noticing?',
+    concernsHint: 'For example: not speaking yet, trouble sitting still, finding school hard.',
+    date: 'Preferred day to visit',
+    time: 'Preferred time',
+    times: ['Morning', 'Afternoon', 'Any time'],
+    submit: 'Send on WhatsApp',
+    note: 'WhatsApp opens with your details filled in. Press send there, and we will confirm the day and time with you.',
+    sent: 'WhatsApp has opened with your details. Press send there and we will confirm your day and time.',
+    again: 'WhatsApp did not open? Tap here.',
+    emailed: 'We have also received your details by email.',
+    intro: 'Hello Bloomridge Springs, I would like to book an assessment for my child.',
+    msg: { name: 'Name', phone: 'Phone', age: 'Child’s age', area: 'Area', concerns: 'Concerns' },
+    visit: 'Preferred visit',
+  },
+  bn: {
+    name: 'আপনার নাম',
+    phone: 'আপনার ফোন নম্বর',
+    age: 'শিশুর বয়স',
+    agePick: 'বয়স বেছে নিন',
+    under: '২ বছরের কম',
+    over: '১০ বছরের বেশি',
+    years: (n: number) => `${n.toLocaleString('bn-BD')} বছর`,
+    area: 'কোন এলাকায় থাকেন',
+    areaHint: 'যেমন: বনশ্রী',
+    concerns: 'শিশুর কোন বিষয়গুলো নিয়ে ভাবছেন?',
+    concernsHint: 'যেমন: এখনো কথা বলছে না, স্থির হয়ে বসতে পারে না, স্কুলে কষ্ট হচ্ছে।',
+    date: 'কোন দিন আসতে চান',
+    time: 'কোন সময়ে',
+    times: ['সকাল', 'দুপুর', 'যেকোনো সময়'],
+    submit: 'WhatsApp-এ পাঠান',
+    note: 'WhatsApp খুলবে, আপনার তথ্য লেখা থাকবে। সেখানে Send চাপুন। দিন ও সময় আমরা আপনাকে নিশ্চিত করে জানাব।',
+    sent: 'আপনার তথ্যসহ WhatsApp খুলেছে। সেখানে Send চাপুন, আমরা দিন ও সময় নিশ্চিত করে জানাব।',
+    again: 'WhatsApp খোলেনি? এখানে চাপুন।',
+    emailed: 'আপনার তথ্য আমরা ইমেইলেও পেয়েছি।',
+    intro: 'হ্যালো ব্লুমরিজ স্প্রিংস, আমার শিশুর অ্যাসেসমেন্টের জন্য সময় নিতে চাই।',
+    msg: { name: 'নাম', phone: 'ফোন', age: 'শিশুর বয়স', area: 'এলাকা', concerns: 'যা নিয়ে ভাবছি' },
+    visit: 'যেদিন আসতে চাই',
+  },
+}[lang];
+const ages = Array.from({ length: site.ages.max - site.ages.min + 1 }, (_, i) => site.ages.min + i);
+---
+<form
+  class="enquiry"
+  data-enquiry
+  data-wa={site.whatsapp.e164}
+  data-lang={lang}
+  data-intro={t.intro}
+  data-visit={t.visit}
+  data-emailed={t.emailed}
+  action={site.formKey ? 'https://api.web3forms.com/submit' : undefined}
+  method="post"
+>
+  {site.formKey && <input type="hidden" name="access_key" value={site.formKey} />}
+  <input type="checkbox" name="botcheck" class="trap" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <label>
+    <span>{t.name}</span>
+    <input type="text" name="name" data-label={t.msg.name} autocomplete="name" required />
+  </label>
+  <label>
+    <span>{t.phone}</span>
+    <input type="tel" name="phone" data-label={t.msg.phone} autocomplete="tel" inputmode="tel" placeholder="01XXX XXXXXX" pattern="[0-9+\s\-]{8,}" required />
+  </label>
+  <label>
+    <span>{t.age}</span>
+    <select name="age" data-label={t.msg.age} required>
+      <option value="" selected disabled>{t.agePick}</option>
+      <option>{t.under}</option>
+      {ages.map((n) => <option>{t.years(n)}</option>)}
+      <option>{t.over}</option>
+    </select>
+  </label>
+  <label>
+    <span>{t.area}</span>
+    <input type="text" name="area" data-label={t.msg.area} list="enquiry-areas" placeholder={t.areaHint} autocomplete="address-level2" required />
+    <datalist id="enquiry-areas">{site.areas.map((a) => <option value={a} />)}</datalist>
+  </label>
+  <label class="wide">
+    <span>{t.concerns}</span>
+    <textarea name="concerns" data-label={t.msg.concerns} rows="4" placeholder={t.concernsHint} required></textarea>
+  </label>
+  <label>
+    <span>{t.date}</span>
+    <input type="date" name="date" required />
+  </label>
+  <label>
+    <span>{t.time}</span>
+    <select name="time">
+      {t.times.map((x) => <option>{x}</option>)}
+    </select>
+  </label>
+
+  <div class="wide send">
+    <button class="btn btn--primary" type="submit"><Icon name="whatsapp" /> {t.submit}</button>
+    <p class="note">{t.note}</p>
+  </div>
+  <p class="wide done" role="status" hidden>
+    <span data-sent>{t.sent}</span>
+    <a data-again href={`https://wa.me/${site.whatsapp.e164}`} target="_blank" rel="noopener">{t.again}</a>
+  </p>
+</form>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('form[data-enquiry]');
+  if (form) {
+    const field = (name: string) => form.elements.namedItem(name) as HTMLInputElement;
+    const { wa, lang, intro, visit, emailed } = form.dataset;
+
+    // Earliest bookable day is tomorrow, in the visitor's own time zone.
+    const tomorrow = new Date(Date.now() + 864e5);
+    field('date').min = [tomorrow.getFullYear(), tomorrow.getMonth() + 1, tomorrow.getDate()]
+      .map((n) => String(n).padStart(2, '0')).join('-');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (field('botcheck').checked) return;
+
+      const day = new Date(`${field('date').value}T00:00`).toLocaleDateString(lang === 'bn' ? 'bn-BD' : 'en-GB', {
+        weekday: 'long', day: 'numeric', month: 'long', year: 'numeric',
+      });
+      const when = `${day}, ${field('time').value}`;
+      const lines = ['name', 'phone', 'age', 'area', 'concerns'].map((n) => `${field(n).dataset.label}: ${field(n).value.trim()}`);
+      const text = [intro, '', ...lines, `${visit}: ${when}`].join('\n');
+      const url = `https://wa.me/${wa}?text=${encodeURIComponent(text)}`;
+
+      // The email copy is sent first and marked keepalive, so it still arrives
+      // if the phone switches straight to WhatsApp.
+      const key = field('access_key')?.value;
+      if (key) {
+        fetch(form.action, {
+          method: 'POST',
+          keepalive: true,
+          headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+          body: JSON.stringify({
+            access_key: key,
+            subject: `Assessment enquiry: ${field('name').value.trim()}, child ${field('age').value}`,
+            from_name: 'Bloomridge Springs website',
+            Name: field('name').value.trim(),
+            Phone: field('phone').value.trim(),
+            'Child age': field('age').value,
+            Area: field('area').value.trim(),
+            Concerns: field('concerns').value.trim(),
+            'Preferred visit': when,
+            Page: location.pathname,
+          }),
+        })
+          .then((r) => r.json())
+          .then((r) => { if (r.success) form.querySelector('[data-sent]')!.append(` ${emailed}`); })
+          .catch(() => {});
+      }
+
+      (window as any).fbq?.('track', 'Lead');
+
+      const again = form.querySelector<HTMLAnchorElement>('[data-again]')!;
+      again.href = url;
+      form.querySelector<HTMLElement>('.done')!.hidden = false;
+      form.querySelector<HTMLElement>('.send')!.hidden = true;
+
+      const win = window.open(url, '_blank');
+      if (win) win.opener = null;
+      else location.href = url;
+    });
+  }
+</script>
+
+<style>
+  .enquiry {
+    display: grid; gap: 1rem; padding: clamp(1.25rem, 3vw, 2rem);
+    background: var(--cream); border: 1px solid var(--hair); border-radius: 22px;
+  }
+  @media (min-width: 34rem) { .enquiry { grid-template-columns: 1fr 1fr; } .wide { grid-column: 1 / -1; } }
+  label { display: grid; gap: 0.35rem; align-content: start; }
+  label span { font-size: var(--small); font-weight: 500; color: var(--pine); }
+  input, select, textarea {
+    width: 100%; min-height: 3rem; padding: 0.7rem 0.85rem; font: inherit; color: var(--ink);
+    background: var(--paper); border: 1px solid var(--hair); border-radius: 12px;
+  }
+  textarea { resize: vertical; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline-offset: 1px; border-color: var(--accent-deep); }
+  ::placeholder { color: var(--pine-soft); opacity: 1; }
+  .trap { position: absolute; width: 1px; height: 1px; min-height: 0; opacity: 0; pointer-events: none; }
+  .send { display: grid; gap: 0.75rem; justify-items: start; }
+  .send .btn { cursor: pointer; }
+  .note, .done { margin: 0; max-width: none; font-size: var(--small); color: var(--muted); }
+  .done { padding: 0.9rem 1rem; border-radius: 12px; background: var(--teal-tint); color: var(--pine); }
+  .done a { display: block; margin-top: 0.35rem; }
+</style>

@@ -12,7 +12,7 @@ export const faqGroups: { id: string; title: string; items: [string, string][] }
     title: 'Getting started',
     items: [
       ['My child is 2 or 3 and still not talking. Should I wait?', 'No. Few or no words at 2, or no two-word phrases by 2 and a half, is worth an assessment now. Waiting rarely helps, and support that starts early is easier and shorter than support that starts late.'],
-      ['How do I start?', 'Call or WhatsApp 01685 559711. We will talk through what you are seeing, tell you honestly whether Bloomridge is the right place, and book a play-based, strengths-first assessment at the centre with you in the room.'],
+      ['How do I start?', 'Call or WhatsApp 01341 125995. We will talk through what you are seeing, tell you honestly whether Bloomridge is the right place, and book a play-based, strengths-first assessment at the centre with you in the room.'],
       ['What happens at the first assessment?', 'Your child plays while we observe all areas of development and note what they already do well. You get a written summary, a program recommendation and a starting plan, without jargon.'],
       ['Is there an assessment fee?', 'Please ask when you call. We will tell you the current fee and what it includes before you book.'],
       ['Does my child need a diagnosis to join?', 'No. We assess what your child can do today and write a plan from that. A report from a paediatrician or specialist is useful if you have one, but not required.'],
@@ -53,7 +53,7 @@ export const faqGroups: { id: string; title: string; items: [string, string][] }
       ['Can we change plan later?', 'Yes, at the start of any month. Many families begin on Foundation while a child settles, then move up where the profile shows extra sessions would help.'],
       ['Can we add extra one-to-one sessions?', 'Yes. Sessions beyond your plan can be added and are charged per session.'],
       ['How do I pay?', 'Monthly, in advance, at the centre. A receipt is issued for every payment.'],
-      ['What are the opening hours?', 'Please call or WhatsApp 01685 559711 for current timings and to arrange a visit.'],
+      ['What are the opening hours?', 'Please call or WhatsApp 01341 125995 for current timings and to arrange a visit.'],
       ['How does the school year run?', 'Teaching blocks run September to November, January to March and May to July. Each is followed by an assessment month (December, April, August) when every goal is scored and the next plan is written.'],
     ],
   },
@@ -74,7 +74,7 @@ export const faqGroups: { id: string; title: string; items: [string, string][] }
       ['Where exactly are you?', 'Floor 1, House 1/1, Road 7, Block F, Banasree, Dhaka 1219. It is on Google Maps as Bloomridge Springs.'],
       ['We live in Rampura, Aftabnagar or Khilgaon. Is that too far?', 'Most of our families come from Banasree, Rampura, Aftabnagar, Khilgaon, Bashabo, Badda, Malibagh, Mugda and Goran. The centre is a short rickshaw ride from Rampura bridge.'],
       ['Is there parking?', 'Yes, on the lane outside.'],
-      ['Can I visit before deciding?', 'Call or WhatsApp 01685 559711 and ask. Most questions are easiest answered in person, at the first conversation or the assessment.'],
+      ['Can I visit before deciding?', 'Call or WhatsApp 01341 125995 and ask. Most questions are easiest answered in person, at the first conversation or the assessment.'],
     ],
   },
 ];

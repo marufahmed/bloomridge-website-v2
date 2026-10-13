@@ -5,6 +5,7 @@ import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import Faq from '../../components/Faq.astro';
 import Cta from '../../components/Cta.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { site, plans } from '../../lib/site';
 import { home, faq } from '../../lib/site.bn';
 import { cover, alt } from '../../lib/images';
@@ -141,7 +142,17 @@ const jsonLd = [{
     </div>
   </section>
 
-  <section id="contact" class="band">
+  <section id="contact" class="band band--paper">
+    <div class="wrap split">
+      <div>
+        <h2>অ্যাসেসমেন্টের জন্য সময় নিন</h2>
+        <p class="lead">ফর্মটি পূরণ করে আপনার সুবিধামতো একটি দিন বেছে নিন। আমরা WhatsApp বা ফোনে যোগাযোগ করে দিন ও সময় নিশ্চিত করব।</p>
+      </div>
+      <ContactForm />
+    </div>
+  </section>
+
+  <section class="band">
     <div class="wrap split">
       <div>
         <h2>{home.areaH}</h2>
