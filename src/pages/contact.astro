@@ -94,12 +94,12 @@ const jsonLd = [{
 </Base>
 
 <style>
-  .ways { display: grid; gap: 0.6rem; margin-top: 1.25rem; }
-  .way { display: grid; grid-template-columns: 2.75rem 1fr; gap: 1rem; align-items: center; text-decoration: none; padding: 0.9rem 1rem; border-radius: 14px; background: var(--paper); border: 1px solid var(--hair); margin: 0; max-width: none; }
+  .ways { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem; margin-top: 1.25rem; }
+  .way { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: 1rem; align-items: center; text-decoration: none; padding: 0.9rem 1rem; border-radius: 14px; background: var(--paper); border: 1px solid var(--hair); margin: 0; max-width: none; }
   a.way:hover { border-color: var(--accent); }
   .way .ico { width: 2.75rem; height: 2.75rem; border-radius: 50%; background: var(--pine); color: var(--gold); display: grid; place-items: center; }
   .way .ico :global(svg) { width: 1.3rem; height: 1.3rem; }
-  .way b { display: block; font-weight: 500; color: var(--pine); }
+  .way b { display: block; font-weight: 500; color: var(--pine); overflow-wrap: anywhere; }
   .way small { display: block; color: var(--muted); font-size: 0.85rem; }
   .map { border-radius: 22px; overflow: hidden; aspect-ratio: 4 / 5; background: var(--sand); }
   .map iframe { width: 100%; height: 100%; border: 0; }
