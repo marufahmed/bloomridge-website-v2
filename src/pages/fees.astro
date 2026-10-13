@@ -4,6 +4,7 @@ import Plans from '../components/Plans.astro';
 import Included from '../components/Included.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
+import Infographic from '../components/Infographic.astro';
 import { site, plans, tk } from '../lib/site';
 
 const faq = [
@@ -64,6 +65,8 @@ const jsonLd = [
   <section class="band band--paper">
     <div class="wrap"><Faq items={faq} title="Questions about fees" /></div>
   </section>
+
+  <Infographic />
 
   <Cta title="Want to talk it through before deciding?" text="Call us and describe what you are seeing. We will suggest a starting plan and explain what would make us recommend moving up or down." />
 </Base>

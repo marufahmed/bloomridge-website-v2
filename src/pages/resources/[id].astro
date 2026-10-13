@@ -5,6 +5,7 @@ import type { CollectionEntry } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import ArticleCard from '../../components/ArticleCard.astro';
 import Cta from '../../components/Cta.astro';
+import Infographic from '../../components/Infographic.astro';
 import { site } from '../../lib/site';
 import { cover, alt } from '../../lib/images';
 
@@ -95,6 +96,8 @@ const jsonLd = [
       </div>
     </div>
   </article>
+
+  <Infographic />
 
   <section class="band band--sand">
     <div class="wrap">

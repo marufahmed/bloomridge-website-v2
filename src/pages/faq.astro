@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
+import Infographic from '../components/Infographic.astro';
 import { site } from '../lib/site';
 import { faqGroups } from '../lib/faq';
 
@@ -46,6 +47,8 @@ const jsonLd = [
       <p>Read more: <a href="/speech-therapy-dhaka/">speech therapy</a>, <a href="/occupational-therapy-dhaka/">occupational therapy</a>, <a href="/special-education-dhaka/">special education</a>, <a href="/autism-support-dhaka/">autism support</a>, <a href="/fees/">plans and fees</a>, or <a href="/bn/faq/">প্রশ্নোত্তর বাংলায়</a>.</p>
     </div>
   </section>
+
+  <Infographic />
 
   <Cta />
 </Base>

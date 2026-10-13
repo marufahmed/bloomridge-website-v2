@@ -1,0 +1,734 @@
+[
+  {
+    "id": "speech-delay-signs",
+    "page": "/resources/speech-delay-signs-by-age/",
+    "template": "checklist",
+    "headline": "Is my child's speech delayed?",
+    "sub": "What most children do, age by age",
+    "points": [
+      [
+        "12 months",
+        "Babbles, points and waves"
+      ],
+      [
+        "18 months",
+        "Uses 10 to 20 words on purpose"
+      ],
+      [
+        "2 years",
+        "About 50 words, joins two together"
+      ],
+      [
+        "3 years",
+        "Short sentences that others can mostly follow"
+      ]
+    ],
+    "note": "A guide, not a diagnosis. Check hearing first.",
+    "alt": "Infographic: is my child's speech delayed? What most children do by age. At 12 months: babbles, points and waves. At 18 months: uses 10 to 20 words on purpose. At 2 years: about 50 words and joins two together. At 3 years: short sentences that others can mostly follow. A guide, not a diagnosis; check hearing first.",
+    "caption": "Is your child talking late? Here is what most children do at 12 months, 18 months, 2 years and 3 years. It is a guide, not a diagnosis, and a hearing check always comes first. The full age-by-age guide is on our website.",
+    "hashtags": [
+      "#SpeechDelay",
+      "#LateTalker",
+      "#SpeechTherapy",
+      "#ChildDevelopment",
+      "#ToddlerMilestones",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a boy of about two sits on the ground holding a wooden toy car up towards his mother, who kneels facing him with one hand cupped behind her ear, smiling, waiting for him to speak. A small wooden ball lies beside them."
+  },
+  {
+    "id": "first-assessment",
+    "page": "/resources/first-assessment-what-to-expect/",
+    "template": "steps",
+    "headline": "Your child's first assessment",
+    "sub": "What happens, step by step",
+    "points": [
+      "Bring old reports, a favourite toy and a list of words",
+      "1 to 2 hours of play, watched carefully",
+      "We map strengths across 6 areas of development",
+      "You get a written 3-month plan"
+    ],
+    "note": "No test paper. Nothing your child can fail.",
+    "alt": "Infographic: your child's first assessment, step by step. One: bring old reports, a favourite toy and a list of words. Two: 1 to 2 hours of play, watched carefully. Three: we map strengths across 6 areas of development. Four: you get a written 3-month plan. No test paper, nothing your child can fail.",
+    "caption": "Worried about what a first assessment involves? It is play, watched carefully. There is no test paper and nothing your child can fail. Here is the morning in four steps, with the full guide on our website.",
+    "hashtags": [
+      "#ChildAssessment",
+      "#EarlyIntervention",
+      "#ChildDevelopment",
+      "#StrengthsFirst",
+      "#SpecialEducation",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a young woman therapist sits cross-legged on the ground blowing soap bubbles from a small wand; a girl of about three reaches up with one hand to touch a bubble, delighted; the girl's mother sits close beside her, watching and smiling. A woven basket of wooden toys sits next to them."
+  },
+  {
+    "id": "meltdown-vs-tantrum",
+    "page": "/resources/meltdowns-vs-tantrums/",
+    "template": "versus",
+    "headline": "Meltdown or tantrum?",
+    "sub": "They look the same. They need different help.",
+    "columns": [
+      "Tantrum",
+      "Meltdown"
+    ],
+    "points": [
+      [
+        "Has a goal",
+        "Is overload, with no goal"
+      ],
+      [
+        "Checks your face",
+        "Words do not get through"
+      ],
+      [
+        "Stops when the goal is met",
+        "Ends in exhaustion"
+      ],
+      [
+        "Stay calm, hold the line",
+        "Fewer words, less noise"
+      ]
+    ],
+    "note": "The same child can have both.",
+    "alt": "Infographic: meltdown or tantrum? A tantrum has a goal, the child checks your face, and it stops when the goal is met; stay calm and hold the line. A meltdown is overload with no goal, words do not get through, and it ends in exhaustion; use fewer words and less noise. The same child can have both.",
+    "caption": "A tantrum has a goal. A meltdown is overload. They look almost the same from the outside, and they need different things from you. Here is how to tell them apart in the moment. The full guide is on our website.",
+    "hashtags": [
+      "#Meltdown",
+      "#Tantrums",
+      "#SensoryProcessing",
+      "#ChildBehaviour",
+      "#PositiveParenting",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a boy of about four sits on the ground hugging his knees, looking down with a small frown; his father kneels calmly beside him at his level, patient and gentle, one hand resting open on his own knee, simply staying close. A soft toy rabbit lies on the ground next to the boy."
+  },
+  {
+    "id": "bilingual-late-talker",
+    "page": "/resources/bilingual-bangla-english-late-talker/",
+    "template": "myth-fact",
+    "headline": "Too many languages?",
+    "sub": "Bangla at home, English at school, and late talking",
+    "points": [
+      [
+        "Two languages are why he is talking late.",
+        "Two languages do not cause speech delay."
+      ],
+      [
+        "Mixing Bangla and English means confusion.",
+        "Mixing is normal. He uses the word he knows."
+      ],
+      [
+        "Drop Bangla. Speak only English at home.",
+        "English is built on a rich home language."
+      ]
+    ],
+    "note": "A delay across both languages is still worth checking.",
+    "alt": "Infographic: too many languages? Myth: too many languages are why your child is talking late. Fact: growing up with 2 languages does not cause speech delay. Myth: mixing Bangla and English in one sentence means confusion. Fact: mixing is normal, your child reaches for the word he knows best. Myth: drop Bangla and speak only English at home. Fact: a rich home language is the foundation English gets built on. A delay across both languages is still worth checking.",
+    "caption": "Bangla with the grandparents, English at school, and a child who is not talking much yet. Parents are often told to pick one language, but growing up with two does not cause speech delay, and dropping Bangla fixes nothing. The full guide, including how to count words across both languages, is on our website.",
+    "hashtags": [
+      "#BilingualChildren",
+      "#LateTalker",
+      "#SpeechDelay",
+      "#BanglaAndEnglish",
+      "#SpeechTherapy",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a grandmother sits cross-legged on the ground holding out a glass of water with both hands towards her granddaughter of about three, who reaches for it with her mouth open mid-word. The grandmother leans in, smiling, listening closely for the word. A small soft cloth doll lies beside the girl."
+  },
+  {
+    "id": "choosing-a-centre",
+    "page": "/resources/choosing-a-therapy-centre-in-dhaka/",
+    "template": "card",
+    "headline": "Choosing a therapy centre?",
+    "sub": "Questions to ask on your visit",
+    "points": [
+      "Who assesses my child, and what happens?",
+      "Do therapists and teachers talk to each other?",
+      "Are my child's goals written down?",
+      "How often will I hear about progress?",
+      "What does the fee include?"
+    ],
+    "note": "If a centre cannot answer one, that is information too.",
+    "alt": "Infographic: choosing a therapy centre? Questions to ask on your visit. Who assesses my child, and what happens? Do therapists and teachers talk to each other? Are my child's goals written down? How often will I hear about progress? What does the fee include? If a centre cannot answer one, that is information too.",
+    "caption": "Every brochure says the same thing, so the questions you ask on your visit matter more. Here are five worth asking at any therapy centre in Dhaka, including ours. The full guide has all 9 questions, with our own answers written plainly, on our website.",
+    "hashtags": [
+      "#ChoosingATherapyCentre",
+      "#ChildDevelopment",
+      "#TherapyCentreDhaka",
+      "#QuestionsToAsk",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a mother stands holding the hand of her son of about five while a young man teacher crouches down to the boy's level and gives him a small friendly wave. The boy waves back shyly. The mother holds a small closed notebook against her chest and watches the two of them with a calm, attentive look."
+  },
+  {
+    "id": "occupational-therapy-explained",
+    "page": "/resources/occupational-therapy-for-children-explained/",
+    "template": "card",
+    "headline": "What is occupational therapy?",
+    "sub": "It is not about jobs. It is about the day.",
+    "points": [
+      "Hands: a spoon, a shirt button, a pencil",
+      "A body settled enough to learn",
+      "Dressing, eating and the toilet without help",
+      "Skills broken into steps, last step first",
+      "For your child, it should look like play"
+    ],
+    "note": "We do not diagnose. Medical causes need a paediatrician.",
+    "alt": "Infographic: what is occupational therapy? It is not about jobs, it is about the day. Hands: a spoon, a shirt button, a pencil. A body settled enough to learn. Dressing, eating and the toilet without help. Skills broken into steps, last step first. For your child, it should look like play. We do not diagnose; medical causes need a paediatrician.",
+    "caption": "Occupational therapy has a confusing name. It is about the things that occupy a child's day: holding a spoon, doing up a button, sitting through a lesson, getting dressed. The full guide to what it does for a young child is on our website.",
+    "hashtags": [
+      "#OccupationalTherapy",
+      "#FineMotorSkills",
+      "#DailyIndependence",
+      "#SensoryRegulation",
+      "#ChildDevelopment",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about four sits on the ground threading a large wooden bead onto a thick lace, her tongue between her lips in concentration. A young man therapist sits cross-legged beside her, holding the other end of the lace steady and watching her hands. A small bowl of coloured wooden beads sits between them."
+  },
+  {
+    "id": "school-readiness-checklist",
+    "page": "/resources/school-readiness-checklist/",
+    "template": "card",
+    "headline": "Is my child ready for school?",
+    "sub": "It is mostly habits, not the alphabet",
+    "points": [
+      "Says goodbye at the gate and goes in",
+      "Sits at a table for 5 to 10 minutes",
+      "Follows a 2-step instruction",
+      "Waits about 1 minute for a turn",
+      "Asks for help with words, a gesture or a picture"
+    ],
+    "note": "Most 4-year-olds have gaps. Pick 2 items, not 10.",
+    "alt": "Infographic: is my child ready for school? It is mostly habits, not the alphabet. Says goodbye at the gate and goes in. Sits at a table for 5 to 10 minutes. Follows a 2-step instruction. Waits about 1 minute for a turn. Asks for help with words, a gesture or a picture. Most 4-year-olds have gaps; pick 2 items, not 10.",
+    "caption": "Admission season makes every parent wonder about the alphabet. School readiness is mostly sitting, listening and asking for help, and those are ordinary habits you can practise at home. The full checklist is on our website.",
+    "hashtags": [
+      "#SchoolReadiness",
+      "#ReadyForSchool",
+      "#SchoolAdmission",
+      "#SittingTolerance",
+      "#EarlyYears",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about five sits on the ground pulling on her own shoe with both hands, concentrating hard. Her mother kneels beside her, holding a small plain school bag ready and waiting patiently without helping, with a proud little smile. The girl's other shoe sits on the ground next to her."
+  },
+  {
+    "id": "sensory-processing",
+    "page": "/resources/sensory-processing-explained/",
+    "template": "checklist",
+    "headline": "Why are loud rooms so hard?",
+    "sub": "Three sensory patterns that show up often",
+    "points": [
+      [
+        "Over",
+        "Flinches, covers up or runs"
+      ],
+      [
+        "Under",
+        "Does not react to a call"
+      ],
+      [
+        "Seeking",
+        "Crashes, jumps and chews for input"
+      ],
+      [
+        "At home",
+        "Heavy work first: 10 big jumps"
+      ]
+    ],
+    "note": "Most children are a mixture, and it shifts with tiredness.",
+    "alt": "Infographic: why are loud rooms so hard? Three sensory patterns that show up often. Over-responsive: the volume is turned up, so a child flinches, covers up or runs. Under-responsive: the volume is turned down, with no reaction to a call. Seeking: the child goes looking for input by crashing, jumping or chewing. At home: heavy work before the hard part, such as 10 big jumps. Most children are a mixture, and it shifts with tiredness.",
+    "caption": "Loud weddings, scratchy labels and haircuts are hard work for some children, and it is not stubbornness. Sensory processing is how the brain sorts what comes in from the body and the world, and three patterns show up again and again. The full guide, with 5 things to try at home, is on our website.",
+    "hashtags": [
+      "#SensoryProcessing",
+      "#SensoryRegulation",
+      "#OccupationalTherapy",
+      "#HeavyWork",
+      "#ChildDevelopment",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about six leans forward and pushes a loaded cane laundry basket along the ground with both hands, her face set with happy effort. Her father walks one step behind her, bending slightly with his hands open, cheering her on quietly. A folded cotton towel sits on top of the basket."
+  },
+  {
+    "id": "sitting-tolerance-at-home",
+    "page": "/resources/sitting-tolerance-and-attention-at-home/",
+    "template": "steps",
+    "headline": "My child cannot sit still",
+    "sub": "Start from the length your child can manage",
+    "points": [
+      "Watch for 3 days to find your child's real limit",
+      "Practise only that length, and end there",
+      "Hold it for about a week, then add 30 seconds",
+      "End while it is going well. Praise the sitting."
+    ],
+    "note": "Expect bad days. Drop the length, keep the routine.",
+    "alt": "Infographic: my child cannot sit still. Start from the length your child can manage. One: watch for 3 days to find your child's real limit. Two: practise only that length, and end there. Three: hold it for about a week, then add 30 seconds. Four: end while it is going well, and praise the sitting. Expect bad days; drop the length and keep the routine.",
+    "caption": "Pushing for five more minutes almost never works, because sitting and attending are physical skills built from a length your child can already manage. Start shorter than you think is useful, and stop while things are still going well. The full guide is on our website.",
+    "hashtags": [
+      "#SittingTolerance",
+      "#AttentionSkills",
+      "#HomePractice",
+      "#OccupationalTherapy",
+      "#SchoolReadiness",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a boy of about six sits on a cushion at a small low wooden table, fitting a piece into a simple wooden puzzle. His father sits beside him, pointing gently at a small sand timer on the table whose sand has nearly run through. Both look calm and pleased."
+  },
+  {
+    "id": "three-month-plan",
+    "page": "/resources/what-a-3-month-plan-looks-like/",
+    "template": "steps",
+    "headline": "What is a 3-month plan?",
+    "sub": "Your child's plan, in plain words",
+    "points": [
+      "We map what your child can already do",
+      "Goals are specific enough for anyone to score",
+      "September to November: we teach and practise",
+      "December: goals scored, then reviewed with you"
+    ],
+    "note": "A goal that is not met is rewritten, not failed.",
+    "alt": "Infographic: what is a 3-month plan? Your child's plan, in plain words. One: we map what your child can already do. Two: goals are specific enough for anyone to score. Three: September to November, we teach and practise. Four: December, goals are scored, then reviewed with you. A goal that is not met is rewritten, not failed.",
+    "caption": "A plan for your child is a relief, until you try to read it. Here is how our 3-month individual education plan works: where the goals come from, when we teach and when we assess. The full guide is on our website.",
+    "hashtags": [
+      "#IndividualEducationPlan",
+      "#IEP",
+      "#SpecialEducation",
+      "#ChildDevelopment",
+      "#ParentCoaching",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about five stands and proudly holds up a small finished wooden shape puzzle with both hands. A woman special educator kneels on one side of her and the girl's father kneels on the other, both smiling at the puzzle, the father clapping softly. All three are drawn whole, from head to feet, and small in the picture, with plain empty cream all around them."
+  },
+  {
+    "id": "speech-therapy-session",
+    "page": "/resources/what-happens-in-speech-therapy/",
+    "template": "steps",
+    "headline": "Inside a speech therapy session",
+    "sub": "It looks like play on the floor",
+    "points": [
+      "Starts on the floor, with 2 or 3 things put out",
+      "The therapist follows your child's lead",
+      "Words are modelled, clearly and repeated",
+      "You take home 2 or 3 things to do"
+    ],
+    "note": "Children show most when they are enjoying themselves.",
+    "alt": "Infographic: inside a speech therapy session. It looks like play on the floor. One: it starts on the floor, with 2 or 3 things put out. Two: the therapist follows your child's lead. Three: words are modelled, clearly and repeated. Four: you take home 2 or 3 things to do. Children show most when they are enjoying themselves.",
+    "caption": "Parents often arrive braced for a desk, a chart and a child asked to repeat words. A first speech and language therapy session looks more like a grown-up playing on the floor with a child, and that is deliberate. The full guide is on our website.",
+    "hashtags": [
+      "#SpeechTherapy",
+      "#SpeechAndLanguage",
+      "#LateTalker",
+      "#PlayBasedTherapy",
+      "#ChildDevelopment",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a young woman therapist sits on the ground with her shoes off, holding out two coloured stacking cups, one in each open hand, and waiting. A boy of about three sits facing her and reaches out to choose one, looking up at her face. A small tower of three more stacking cups stands between them."
+  },
+  {
+    "id": "why-start-early",
+    "page": "/resources/why-early-intervention-matters/",
+    "template": "myth-fact",
+    "headline": "Should we wait and see?",
+    "sub": "Starting early, before any diagnosis",
+    "points": [
+      [
+        "He is only 3. He will catch up.",
+        "Some do, but nobody can tell in advance which."
+      ],
+      [
+        "You need a diagnosis before support starts.",
+        "Support starts from what he can and cannot do."
+      ],
+      [
+        "An assessment will label my child.",
+        "An assessment here is not a diagnosis."
+      ]
+    ],
+    "note": "Not a door that slams shut. Children learn at every age.",
+    "alt": "Infographic: should we wait and see? Myth: he is only 3, wait and see, he will catch up. Fact: some children do catch up, but nobody can tell in advance which. Myth: you need a diagnosis before support can start. Fact: support is built from what a child can and cannot do right now. Myth: an assessment will put a label on my child. Fact: an assessment here is not a diagnosis, and what we write stays with you. This is not a door that slams shut; children learn at every age.",
+    "caption": "Waiting is a completely reasonable instinct, and the advice from family is usually kind. You do not have to decide today whether something is wrong, only whether your child could use some practice. The full guide on starting early, before any diagnosis, is on our website.",
+    "hashtags": [
+      "#EarlyIntervention",
+      "#EarlyYears",
+      "#WaitAndSee",
+      "#ChildDevelopment",
+      "#SpeechDelay",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a mother and her son of about three sit on the ground building a tower of plain wooden blocks together. The boy holds one block out to his mother, looking at her face, and she holds out her open palm to take her turn. The tower between them is four blocks high."
+  },
+  {
+    "id": "speech-therapy-who-it-helps",
+    "page": "/speech-therapy-dhaka/",
+    "template": "card",
+    "headline": "Who does speech therapy help?",
+    "sub": "Play-based sessions, in Bangla and English",
+    "points": [
+      "Late talkers with fewer words than expected",
+      "Speech understood at home but not by a teacher",
+      "Children who do not follow a 2-step instruction",
+      "Children who have words but cannot ask for help",
+      "Children who use gestures, signs or pictures"
+    ],
+    "note": "No diagnosis needed. We assess what your child can do.",
+    "alt": "Infographic: who does speech therapy help? Play-based sessions, in Bangla and English. Late talkers with fewer words than expected. Children whose speech is understood at home but not by a teacher. Children who do not follow a 2-step instruction. Children who have words but cannot ask for help. Children who use gestures, signs or pictures. No diagnosis is needed; we assess what your child can do.",
+    "caption": "Speech is the sounds a child makes, and language is the understanding and the meaning behind them. Our speech and language therapist first works out which one the worry is about, because the help is different. Read more on the speech therapy page on our website.",
+    "hashtags": [
+      "#SpeechTherapy",
+      "#SpeechTherapyDhaka",
+      "#LateTalker",
+      "#SpeechAndLanguage",
+      "#UnclearSpeech",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a young man therapist sits at a small low table holding up one picture card that shows only a simple painted mango. A boy of about six sits across from him on a cushion, pointing at the card with one finger and speaking, his eyebrows raised. The therapist nods, listening."
+  },
+  {
+    "id": "occupational-therapy-what-we-work-on",
+    "page": "/occupational-therapy-dhaka/",
+    "template": "card",
+    "headline": "Could occupational therapy help?",
+    "sub": "What our occupational therapist works on",
+    "points": [
+      "Finding the input that settles your child",
+      "Hand strength and a working pencil grip",
+      "Spoon, cup, buttons, zips, shoes and toileting",
+      "Core strength, so sitting is not hard work",
+      "A sensory plan written for your home"
+    ],
+    "note": "Not only for autism. With or without any diagnosis.",
+    "alt": "Infographic: could occupational therapy help? What our occupational therapist works on. Finding the input that settles your child. Hand strength and a working pencil grip. Spoon, cup, buttons, zips, shoes and toileting. Core strength, so sitting is not hard work. A sensory plan written for your home. Not only for autism; with or without any diagnosis.",
+    "caption": "For the child who cannot sit still, cannot bear noise, or cannot yet hold a spoon or a pencil. The occupations of childhood are eating, dressing, playing and coping with a noisy room, and occupational therapy helps a child do those with less struggle. Read more on the occupational therapy page on our website.",
+    "hashtags": [
+      "#OccupationalTherapy",
+      "#OccupationalTherapyDhaka",
+      "#SensoryRegulation",
+      "#FineMotorSkills",
+      "#HandwritingReadiness",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about five kneels on the ground squeezing a lump of amber playdough hard between both hands, cheeks puffed with effort. A young woman therapist kneels facing her, rolling her own piece of dough into a ball on her palm to show how. A small wooden rolling pin lies between them."
+  },
+  {
+    "id": "special-education-what-it-is",
+    "page": "/special-education-dhaka/",
+    "template": "card",
+    "headline": "What is special education?",
+    "sub": "Teaching built around one child",
+    "points": [
+      "One-to-one teaching at your child's pace",
+      "A classroom of at most 15 children",
+      "A written curriculum for each trimester",
+      "A 3-month individual education plan",
+      "A weekly review of progress with you"
+    ],
+    "note": "Many children here have no diagnosis at all.",
+    "alt": "Infographic: what is special education? Teaching built around one child. One-to-one teaching at your child's pace. A classroom of at most 15 children. A written curriculum for each trimester. A 3-month individual education plan. A weekly review of progress with you. Many children here have no diagnosis at all.",
+    "caption": "Special education means teaching built around one child: what they can already do, how they learn best, and the next small step. The term is used loosely in Dhaka, so here is exactly what we mean by it. Read more on the special education page on our website.",
+    "hashtags": [
+      "#SpecialEducation",
+      "#SpecialEducationDhaka",
+      "#IndividualEducationPlan",
+      "#OneToOneTeaching",
+      "#InclusiveEducation",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a boy of about seven sits on a cushion at a small low table, dropping a green wooden shape into one of two small bowls as he sorts shapes by colour. A woman teacher sits close beside him, holding the next shape ready on her open palm and watching him choose."
+  },
+  {
+    "id": "social-skills-group",
+    "page": "/social-skills-group-dhaka/",
+    "template": "card",
+    "headline": "Plays beside, but not with?",
+    "sub": "A weekly group led by a child psychologist",
+    "points": [
+      "Turn-taking and waiting",
+      "Greeting, joining in and asking to play",
+      "Naming feelings and spotting them in others",
+      "Following instructions given to the whole group",
+      "Winning and losing in low-stakes games"
+    ],
+    "note": "A small group, with the same children each week.",
+    "alt": "Infographic: plays beside, but not with? A weekly group led by a child psychologist. Turn-taking and waiting. Greeting, joining in and asking to play. Naming feelings and spotting them in others. Following instructions given to the whole group. Winning and losing in low-stakes games. A small group, with the same children each week.",
+    "caption": "Some things can only be learned in a group: waiting while someone else has the turn, joining a game that has already started, losing without the afternoon ending. Our weekly group is led by a child psychologist and is part of every plan. Read more on the social skills group page on our website.",
+    "hashtags": [
+      "#SocialSkills",
+      "#SocialSkillsGroup",
+      "#TurnTaking",
+      "#PeerPlay",
+      "#EmotionalAwareness",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about six and a boy of about five sit cross-legged facing each other on two cushions; the girl passes a small cloth beanbag into the boy's waiting cupped hands. A woman psychologist sits beside them completing the little circle, holding one finger up gently to mark whose turn it is, and smiling."
+  },
+  {
+    "id": "autism-support",
+    "page": "/autism-support-dhaka/",
+    "template": "card",
+    "headline": "Autism support, in one place",
+    "sub": "One team, one profile of your child",
+    "points": [
+      "Speech therapy for first words and requests",
+      "OT to find the input that settles your child",
+      "One-to-one teaching at your child's pace",
+      "A weekly psychologist-led group",
+      "Weekly review, and 2 or 3 things to try at home"
+    ],
+    "note": "We do not diagnose autism, and we do not promise a cure.",
+    "alt": "Infographic: autism support, in one place. One team, one profile of your child. Speech therapy for first words and requests. Occupational therapy to find the input that settles your child. One-to-one teaching at your child's pace. A weekly psychologist-led group. A weekly review, and 2 or 3 things to try at home. We do not diagnose autism, and we do not promise a cure.",
+    "caption": "Many families spend months moving between a speech therapist in one part of the city, an occupational therapy clinic in another and a school that is not sure what to do. Here the whole team works from one profile of your child, with or without a diagnosis. Read more on the autism support page on our website.",
+    "hashtags": [
+      "#AutismSupport",
+      "#AutismSupportDhaka",
+      "#AutismFamilies",
+      "#StrengthsFirst",
+      "#ChildDevelopment",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a mother and her son of about five kneel facing each other on the ground playing a clapping game, their palms meeting in the middle. The boy is absorbed and smiling; the mother's mouth is open as she sings softly to him. A soft toy elephant sits on the ground beside the boy."
+  },
+  {
+    "id": "early-intervention-program",
+    "page": "/early-intervention/",
+    "template": "card",
+    "headline": "What is early intervention?",
+    "sub": "Usually ages 2 to 6. Foundations first.",
+    "points": [
+      "Regulation first: a settled child can learn",
+      "A way to be understood: words, signs or pictures",
+      "First social steps: sitting, sharing, turns",
+      "4 school sessions and 1 group session a week",
+      "2 to 4 one-to-one therapy sessions a week"
+    ],
+    "note": "No diagnosis is needed to join.",
+    "alt": "Infographic: what is early intervention? Usually ages 2 to 6, foundations first. Regulation first: a settled child can learn. A way to be understood: words, signs or pictures. First social steps: sitting, sharing and taking turns. 4 school sessions and 1 group session a week. 2 to 4 one-to-one therapy sessions a week. No diagnosis is needed to join.",
+    "caption": "Our Early Intervention Program is for children, usually aged 2 to 6, who need support with communication, sensory processing or connecting with others. We start where your child is, and build the groundwork that everything else stands on. Read more on the Early Intervention page on our website.",
+    "hashtags": [
+      "#EarlyIntervention",
+      "#EarlyInterventionDhaka",
+      "#EarlyYears",
+      "#FirstWords",
+      "#ChildDevelopment",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about two stands on tiptoe pointing with one finger at a small painted wooden duck that her father, kneeling in front of her, holds just above her reach. He watches her face with a gentle smile, waiting for her to ask. A second wooden duck sits on the ground by her feet."
+  },
+  {
+    "id": "school-readiness-program",
+    "page": "/school-readiness/",
+    "template": "card",
+    "headline": "Getting ready for the classroom",
+    "sub": "School Readiness Program, usually ages 4 to 10",
+    "points": [
+      "Sitting tolerance, attention and instructions",
+      "Structured reading, writing and numbers",
+      "Group rules and putting a hand up, rehearsed",
+      "Handwriting grip and classroom focus",
+      "Short take-home worksheets, matched to level"
+    ],
+    "note": "Already at school? Many children attend both.",
+    "alt": "Infographic: getting ready for the classroom. School Readiness Program, usually ages 4 to 10. Sitting tolerance, attention and following instructions. Structured reading, writing and numbers. Group rules and putting a hand up, rehearsed. Handwriting grip and classroom focus. Short take-home worksheets, matched to level. Already at school? Many children attend both.",
+    "caption": "Our School Readiness Program is for children preparing for school, or up to age 10, who need support with classroom routines, reading and writing and sitting tolerance. Classroom life is rehearsed before it is needed. Read more on the School Readiness page on our website.",
+    "hashtags": [
+      "#SchoolReadiness",
+      "#SchoolReadinessDhaka",
+      "#ClassroomSkills",
+      "#ReadingAndWriting",
+      "#SittingTolerance",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a boy of about eight sits cross-legged on a cushion with one hand raised straight up, waiting to be chosen. A girl of about seven sits beside him with her hands in her lap, looking towards the man teacher who kneels in front of them and gestures warmly to the boy with an open hand."
+  },
+  {
+    "id": "fees-what-is-included",
+    "page": "/fees/",
+    "template": "card",
+    "headline": "What do our monthly fees cover?",
+    "sub": "Three plans. One difference between them.",
+    "points": [
+      "4 school sessions a week, 2 hours each",
+      "1 psychologist-led group session a week",
+      "2, 3 or 4 one-to-one therapy sessions a week",
+      "Weekly review and take-home worksheets",
+      "From Tk 18,000 to Tk 26,000 a month"
+    ],
+    "note": "The same three plans for both programs.",
+    "alt": "Infographic: what do our monthly fees cover? Three plans, with one difference between them. 4 school sessions a week, 2 hours each. 1 psychologist-led group session a week. 2, 3 or 4 one-to-one therapy sessions a week. Weekly review and take-home worksheets. From Tk 18,000 to Tk 26,000 a month: Foundation Tk 18,000, Enhanced Tk 22,000, Intensive Tk 26,000. The same three plans for both programs.",
+    "caption": "Our monthly plans are Foundation Tk 18,000, Enhanced Tk 22,000 and Intensive Tk 26,000. The only thing that changes between them is how many one-to-one therapy sessions your child has each week; the classroom, the group and the review are the same. The fees page on our website lists what each plan includes.",
+    "hashtags": [
+      "#TherapyFees",
+      "#PlansAndFees",
+      "#ChildTherapyDhaka",
+      "#SpecialEducation",
+      "#ChildDevelopment",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a mother and a father sit on the ground on two cushions, turned towards each other in quiet conversation, the father counting gently on his fingers as he thinks something through. Their daughter of about four sits between them hugging a soft toy bear and looking up from one parent to the other."
+  },
+  {
+    "id": "how-we-work-loop",
+    "page": "/how-we-work/",
+    "template": "steps",
+    "headline": "One team, one profile, one loop",
+    "sub": "Four moves, repeated every week",
+    "points": [
+      "We map what your child can do first",
+      "One live Student Profile the whole team uses",
+      "The daily loop between therapists and teachers",
+      "A weekly review, shared with you"
+    ],
+    "note": "No diagnosis is made or required.",
+    "alt": "Infographic: one team, one profile, one loop. Four moves, repeated every week. One: we map what your child can do first. Two: one live Student Profile the whole team uses. Three: the daily loop between therapists and teachers. Four: a weekly review, shared with you. No diagnosis is made or required.",
+    "caption": "Most centres have good therapists. What makes progress stick is whether the therapist, the teacher and the parent are working from the same page on the same day. Here is our loop in four moves, with more on the how we work page on our website.",
+    "hashtags": [
+      "#HowWeWork",
+      "#StrengthsFirst",
+      "#StudentProfile",
+      "#ParentCoaching",
+      "#ChildDevelopment",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a girl of about five stands holding up a crayon drawing of a single yellow flower for two adults to see. A woman therapist and a man teacher kneel side by side in front of her, leaning in together to look at the drawing, both smiling and nodding. Two crayons lie on the ground by her feet."
+  },
+  {
+    "id": "faq-before-you-call",
+    "page": "/faq/",
+    "template": "card",
+    "headline": "Before you call: common questions",
+    "sub": "Straight answers to what parents ask most",
+    "points": [
+      "No diagnosis is needed to join",
+      "Therapy is in both Bangla and English",
+      "At most 15 children in the classroom",
+      "Children can attend their school as well",
+      "We do not diagnose autism or ADHD"
+    ],
+    "note": "Question not here? Send us a WhatsApp and ask.",
+    "alt": "Infographic: before you call, common questions. Straight answers to what parents ask most. No diagnosis is needed to join. Therapy is in both Bangla and English. At most 15 children in the classroom. Children can attend their school as well. We do not diagnose autism or ADHD. Question not here? Send us a WhatsApp and ask.",
+    "caption": "Before you call, here are short answers to five of the questions we hear most, about diagnosis, language, class size and school. If yours is not among them, WhatsApp us and ask. All the questions parents ask are answered on the FAQ page on our website.",
+    "hashtags": [
+      "#ParentQuestions",
+      "#FAQ",
+      "#ChildTherapyDhaka",
+      "#SpeechTherapy",
+      "#SpecialEducation",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Banasree",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a grandfather sits on a cushion with one open hand raised slightly, in the middle of asking a question. A woman teacher sits on a cushion facing him, listening with her head tilted and a kind smile. His grandson of about three leans against the grandfather's knee, holding a small wooden train."
+  },
+  {
+    "id": "banasree-centre",
+    "page": "/banasree/",
+    "template": "card",
+    "headline": "Child therapy in Banasree",
+    "sub": "School, therapy and development in one place",
+    "points": [
+      "Speech and language therapy",
+      "Occupational therapy",
+      "Special education, in a class of at most 15",
+      "A weekly group led by a child psychologist",
+      "For ages 2 to 10, in Block F, Banasree"
+    ],
+    "note": "A short rickshaw ride from Rampura bridge.",
+    "alt": "Infographic: child therapy in Banasree. School, therapy and development in one place. Speech and language therapy. Occupational therapy. Special education, in a class of at most 15. A weekly group led by a child psychologist. For ages 2 to 10, in Block F, Banasree. A short rickshaw ride from Rampura bridge.",
+    "caption": "Families in Banasree, Rampura and Aftabnagar often end up with a speech therapist in one place, an occupational therapy clinic in another, and a school that does not know what either is doing. At Bloomridge Springs one team works from one profile of your child. Read more on the Banasree page on our website.",
+    "hashtags": [
+      "#Banasree",
+      "#BanasreeDhaka",
+      "#ChildTherapyDhaka",
+      "#SpeechTherapy",
+      "#OccupationalTherapy",
+      "#SpecialEducation",
+      "#ParentingBangladesh",
+      "#DhakaParents",
+      "#Dhaka",
+      "#BloomridgeSprings"
+    ],
+    "scene": "WHAT IS HAPPENING: a mother and her son of about nine walk side by side holding hands, mid-step and chatting. The boy carries a small plain backpack on both shoulders and swings a water bottle in his free hand, looking up at his mother, who looks down at him with an easy smile."
+  }
+]

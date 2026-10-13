@@ -7,6 +7,7 @@ import WeekStrip from './WeekStrip.astro';
 import Plans from './Plans.astro';
 import Faq from './Faq.astro';
 import Cta from './Cta.astro';
+import Infographic from './Infographic.astro';
 import { programs, site } from '../lib/site';
 import { cover, alt } from '../lib/images';
 
@@ -126,6 +127,8 @@ const jsonLd = [
       <Faq items={p.faq} />
     </div>
   </section>
+
+  <Infographic />
 
   <Cta />
 </Base>

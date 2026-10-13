@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Generate the website illustrations with Azure gpt-image-2.
 
-Ten scenes, one per hero/section. Every scene is written as a hand-painted
+Ten scenes, one per hero/section, plus one portrait scene per infographic
+(the "scene" of each entry in src/lib/infographics.json, written to
+src/assets/infographic/; the words are added
+afterwards by scripts/make-infographics.mjs). Every scene is written as a hand-painted
 picture-book illustration with no photographic vocabulary, because the Azure
 deployment refuses photographic prompts that include children.
 
@@ -27,7 +30,9 @@ HERE = Path(__file__).resolve().parent
 ROOT = HERE.parent
 OUT = ROOT / "src" / "assets" / "img"
 ENV_FILE = ROOT.parent / "04-Clinical" / "storybooks" / ".env"
+OUT_INFO = ROOT / "src" / "assets" / "infographic"
 W, H = 1536, 1024
+INFO_W, INFO_H = 1024, 1536
 
 STYLE = (
     "A warm hand-painted children's picture-book illustration in gouache and coloured "
@@ -35,8 +40,19 @@ STYLE = (
     "proportions: people are drawn as people, not exaggerated cartoons. Bright, even "
     "daylight and gentle soft shadows. A restrained palette of deep pine green, warm "
     "cream, sand, soft amber and honey yellow, with small touches of muted teal. "
-    "Every part of the picture is finished with the same care, nothing hazy or sketchy. "
-    "Wide 3:2 landscape framing with generous calm space around the subject."
+    "Every part of the picture is finished with the same care, nothing hazy or sketchy."
+)
+FRAMING = "Wide 3:2 landscape framing with generous calm space around the subject."
+# Infographics: a compact group on a plain ground that make-infographics.mjs can
+# lift out, scale and set under the words. The model keeps figures to about the
+# lower half whatever it is told, so the script measures where they are.
+FRAMING_INFO = (
+    "Tall 2:3 portrait framing. The whole background is one plain, flat, even warm "
+    "cream colour from edge to edge: no room, no wall, no floor line, no furniture, no "
+    "horizon, no pattern. The figures and objects form one compact group, centred, in "
+    "the lower half of the picture, with clear empty cream margin on the left and on "
+    "the right: nothing touches or is cut off by any edge. The upper half of the "
+    "picture is completely empty plain cream with nothing in it at all."
 )
 PEOPLE = (
     "Everyone is Bangladeshi, in ordinary contemporary clothing suited to the place. "
@@ -135,6 +151,13 @@ SCENES = {
     ),
 }
 
+# One per entry in src/lib/infographics.json, from its "scene": one small group
+# doing one visible thing. FRAMING_INFO supplies the plain background.
+INFOGRAPHIC_SCENES = {
+    e["id"]: e["scene"]
+    for e in json.loads((ROOT / "src" / "lib" / "infographics.json").read_text(encoding="utf-8"))
+}
+
 
 def load_env():
     if ENV_FILE.exists():
@@ -153,8 +176,8 @@ def load_env():
     return f"{base}?api-version={api_version}", key
 
 
-def generate(endpoint: str, key: str, prompt: str) -> bytes:
-    body = {"prompt": prompt, "n": 1, "size": f"{W}x{H}", "quality": "high",
+def generate(endpoint: str, key: str, prompt: str, size: str) -> bytes:
+    body = {"prompt": prompt, "n": 1, "size": size, "quality": "high",
             "output_format": "png"}
     req = urllib.request.Request(
         endpoint, data=json.dumps(body).encode(),
@@ -175,22 +198,30 @@ def generate(endpoint: str, key: str, prompt: str) -> bytes:
 
 def main(argv):
     OUT.mkdir(parents=True, exist_ok=True)
+    OUT_INFO.mkdir(parents=True, exist_ok=True)
+
+    def target(sid):
+        if sid in INFOGRAPHIC_SCENES:
+            return OUT_INFO / f"{sid}.png", INFOGRAPHIC_SCENES[sid], FRAMING_INFO, f"{INFO_W}x{INFO_H}"
+        return OUT / f"{sid}.png", SCENES[sid], FRAMING, f"{W}x{H}"
+
+    every = [*SCENES, *INFOGRAPHIC_SCENES]
     if "--status" in argv:
-        for sid in SCENES:
-            print(("done   " if (OUT / f"{sid}.png").exists() else "missing"), sid)
+        for sid in every:
+            print(("done   " if target(sid)[0].exists() else "missing"), sid)
         return
     force = "--force" in argv
-    wanted = [a for a in argv[1:] if not a.startswith("--")] or list(SCENES)
+    wanted = [a for a in argv[1:] if not a.startswith("--")] or every
     endpoint, key = load_env()
     for sid in wanted:
-        path = OUT / f"{sid}.png"
+        path, scene, framing, size = target(sid)
         if path.exists() and not force:
             print("skip", sid); continue
-        prompt = f"{STYLE}\n\n{SCENES[sid]}\n\nPEOPLE: {PEOPLE}\n\n{SECULAR}\n\n{NEGATIVE}"
+        prompt = f"{STYLE} {framing}\n\n{scene}\n\nPEOPLE: {PEOPLE}\n\n{SECULAR}\n\n{NEGATIVE}"
         for attempt in range(1, 4):
             t0 = time.time()
             try:
-                data = generate(endpoint, key, prompt)
+                data = generate(endpoint, key, prompt, size)
                 path.write_bytes(data)
                 print(f"ok   {sid} {len(data)//1024} KB {time.time()-t0:.0f}s", flush=True)
                 break

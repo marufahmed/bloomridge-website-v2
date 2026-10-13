@@ -5,6 +5,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
+import Infographic from '../components/Infographic.astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import { site } from '../lib/site';
 import { services } from '../lib/services';
@@ -107,6 +108,8 @@ const jsonLd = [
       <Faq items={s.faq} title={`Questions parents ask about ${s.name.toLowerCase()}`} />
     </div>
   </section>
+
+  <Infographic />
 
   {related.length > 0 && (
     <section class="band band--sand">

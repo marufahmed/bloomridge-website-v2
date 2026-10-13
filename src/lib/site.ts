@@ -35,6 +35,8 @@ export const site = {
   // Fill these in and the contact page, footer and JSON-LD pick them up.
   hours: '' as string,
   social: { facebook: '' as string },
+  // Meta Pixel ID from Events Manager. Leave empty to switch tracking off.
+  metaPixel: '1075689351958457' as string,
   seats: 15,
   ages: { min: 2, max: 10 },
   // Neighbourhoods families travel from. Used on the contact page and in the

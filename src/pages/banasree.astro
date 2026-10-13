@@ -3,6 +3,7 @@ import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
+import Infographic from '../components/Infographic.astro';
 import { site, plans, tk } from '../lib/site';
 import { services } from '../lib/services';
 
@@ -107,6 +108,8 @@ const jsonLd = [
       <p class="more"><a href="/faq/">All questions parents ask</a> · <a href="/bn/">বাংলায় পড়ুন</a></p>
     </div>
   </section>
+
+  <Infographic />
 
   <Cta title="Looking for child therapy in Banasree?" text="Call or WhatsApp. We will listen to what you are seeing, tell you honestly whether Bloomridge is the right place, and book a strengths-first assessment." />
 </Base>
