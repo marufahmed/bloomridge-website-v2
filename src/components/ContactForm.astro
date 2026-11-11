@@ -63,6 +63,7 @@ const ages = Array.from({ length: site.ages.max - site.ages.min + 1 }, (_, i) =>
   class="enquiry"
   data-enquiry
   data-wa={site.whatsapp.e164}
+  data-ads-lead={site.googleAds.lead}
   data-lang={lang}
   data-intro={t.intro}
   data-visit={t.visit}
@@ -170,6 +171,7 @@ const ages = Array.from({ length: site.ages.max - site.ages.min + 1 }, (_, i) =>
       }
 
       (window as any).fbq?.('track', 'Lead');
+      (window as any).gtag?.('event', 'conversion', { send_to: form.dataset.adsLead });
 
       const again = form.querySelector<HTMLAnchorElement>('[data-again]')!;
       again.href = url;

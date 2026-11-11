@@ -1,7 +1,8 @@
 // Bangla copy for the Bangla homepage (/bn/) and the Bangla FAQ page (/bn/faq/).
 // Facts must match site.ts: ages, plans, fees, phones, address. Prices and
 // session counts are rendered from site.ts by the templates where possible.
-// Do not add opening hours, the assessment fee or staff details here until
+// Opening hours were confirmed on 11 Nov 2026. Do not add the assessment fee
+// or staff details here until
 // they are confirmed.
 
 type Program = { name: string; ages: string; lead: string };
@@ -263,7 +264,7 @@ export const faq: { group: string; items: [string, string][] }[] = [
       ],
       [
         'সেন্টার কখন খোলা থাকে? ক্লাসের সময় কখন?',
-        'খোলার সময় ও ক্লাসের সময়সূচি ফোন বা WhatsApp-এ জেনে নিন: 01341 125995।',
+        'শনিবার থেকে বৃহস্পতিবার, সকাল ৯টা থেকে সন্ধ্যা ৬টা। শুক্রবার বন্ধ। ক্লাসের সময়সূচি জানতে ও ভিজিটের সময় ঠিক করতে ফোন বা WhatsApp করুন: 01341 125995।',
       ],
     ],
   },

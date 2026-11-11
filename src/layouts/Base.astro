@@ -51,6 +51,12 @@ const org = {
   },
   geo: { '@type': 'GeoCoordinates', latitude: site.map.lat, longitude: site.map.lng },
   hasMap: site.map.link,
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: site.openingHours.days,
+    opens: site.openingHours.opens,
+    closes: site.openingHours.closes,
+  },
   areaServed: [{ '@type': 'City', name: 'Dhaka' }, ...site.areas.map((name) => ({ '@type': 'Place', name: `${name}, Dhaka` }))],
   alternateName: 'ব্লুমরিজ স্প্রিংস',
   knowsAbout: ['Early intervention', 'School readiness', 'Speech and language therapy', 'Occupational therapy', 'Special education', 'Child development', 'Autism support', 'Sensory processing'],
@@ -62,7 +68,7 @@ const org = {
       itemOffered: { '@type': 'Service', name: s.name, url: `${site.url}/${s.slug}/`, areaServed: 'Dhaka' },
     })),
   },
-  ...(site.social.facebook ? { sameAs: [site.social.facebook] } : {}),
+  sameAs: [...Object.values(site.social).filter(Boolean), site.map.link],
 };
 const website = {
   '@context': 'https://schema.org',
@@ -76,6 +82,7 @@ const website = {
 const graph = [org, website, ...jsonLd];
 // Production builds only, so local previews never reach Meta as visits.
 const pixel = import.meta.env.PROD ? site.metaPixel : '';
+const ads = import.meta.env.PROD && site.googleAds.id ? site.googleAds : null;
 ---
 <!doctype html>
 <html lang={lang} data-accent={accent}>
@@ -127,6 +134,21 @@ const pixel = import.meta.env.PROD ? site.metaPixel : '';
 
     <script type="application/ld+json" set:html={JSON.stringify(graph)} />
 
+    {ads && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ads.id}`}></script>}
+    {ads && (
+      <script is:inline define:vars={{ ads }}>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', ads.id);
+        // A WhatsApp or phone tap is an enquiry: count it as a Contact conversion.
+        document.addEventListener('click', (e) => {
+          const a = e.target instanceof Element && e.target.closest('a[href^="https://wa.me/"], a[href^="tel:"]');
+          if (a) gtag('event', 'conversion', { send_to: ads.contact });
+        });
+      </script>
+    )}
     {pixel && (
       <script is:inline define:vars={{ pixel }}>
         !function(f,b,e,v,n,t,s)

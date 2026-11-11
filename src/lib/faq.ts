@@ -1,6 +1,7 @@
 // The questions parents ask before they call, grouped for /faq/. Answers use
 // only facts already stated elsewhere on the site; anything not yet confirmed
-// (opening hours, assessment fee, assessment length) is answered "ask us".
+// (assessment fee, assessment length) is answered "ask us". Opening hours
+// were confirmed on 11 Nov 2026.
 
 import { plans, tk } from './site';
 
@@ -53,7 +54,7 @@ export const faqGroups: { id: string; title: string; items: [string, string][] }
       ['Can we change plan later?', 'Yes, at the start of any month. Many families begin on Foundation while a child settles, then move up where the profile shows extra sessions would help.'],
       ['Can we add extra one-to-one sessions?', 'Yes. Sessions beyond your plan can be added and are charged per session.'],
       ['How do I pay?', 'Monthly, in advance, at the centre. A receipt is issued for every payment.'],
-      ['What are the opening hours?', 'Please call or WhatsApp 01341 125995 for current timings and to arrange a visit.'],
+      ['What are the opening hours?', 'Saturday to Thursday, 9 am to 6 pm. We are closed on Friday. Call or WhatsApp 01341 125995 to arrange a visit.'],
       ['How does the school year run?', 'Teaching blocks run September to November, January to March and May to July. Each is followed by an assessment month (December, April, August) when every goal is scored and the next plan is written.'],
     ],
   },

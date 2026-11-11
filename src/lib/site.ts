@@ -29,15 +29,33 @@ export const site = {
   phones: [{ display: '01341 125995', e164: '+8801341125995' }],
   whatsapp: { e164: '8801341125995', display: '01341 125995' },
   email: 'bloomridgesprings@gmail.com',
-  // Opening hours and social links are not in the brand files yet.
-  // Fill these in and the contact page, footer and JSON-LD pick them up.
-  hours: '' as string,
-  social: { facebook: '' as string },
+  // Confirmed by the owner, 11 Nov 2026: Saturday to Thursday, Friday closed.
+  // Shown on the contact page and in the JSON-LD openingHoursSpecification.
+  hours: 'Saturday to Thursday, 9 am to 6 pm. Closed Friday.' as string,
+  openingHours: {
+    days: ['Saturday', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday'],
+    opens: '09:00',
+    closes: '18:00',
+  },
+  // Official profiles. They feed the footer and the JSON-LD sameAs list, which
+  // is how Google ties the site, the Maps listing and the pages together.
+  social: {
+    facebook: 'https://www.facebook.com/bloomridge.springs/',
+    instagram: 'https://www.instagram.com/bloomridgesprings/',
+    youtube: 'https://www.youtube.com/@BloomridgeSprings',
+  },
   // Web3Forms access key (web3forms.com, free). With it set, every enquiry
   // form submission is also emailed to the address the key was created for.
   formKey: '73761c04-b939-4557-8e13-4fc5864d03b4' as string,
   // Meta Pixel ID from Events Manager. Leave empty to switch tracking off.
   metaPixel: '1075689351958457' as string,
+  // Google Ads tag and conversion labels (Goals > Conversions, account
+  // 605-511-5494). Leave id empty to switch tracking off.
+  googleAds: {
+    id: 'AW-18566292570' as string,
+    lead: 'AW-18566292570/JoeZCOz6prYdENrIjJVF', // "Website enquiry form"
+    contact: 'AW-18566292570/UvK3CO_6prYdENrIjJVF', // "WhatsApp or call click on website"
+  },
   seats: 15,
   ages: { min: 2, max: 10 },
   // Neighbourhoods families travel from. Used on the contact page and in the
