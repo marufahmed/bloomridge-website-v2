@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
-    "images": "python3 scripts/gen-images.py"
+    "images": "python3 scripts/gen-images.py",
+    "indexnow": "sh scripts/indexnow.sh"
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.19",
